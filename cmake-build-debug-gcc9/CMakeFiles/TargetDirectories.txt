@@ -1,0 +1,3 @@
+/home/kris271c/Desktop/assignment/cmake-build-debug-gcc9/CMakeFiles/rebuild_cache.dir
+/home/kris271c/Desktop/assignment/cmake-build-debug-gcc9/CMakeFiles/frogs.dir
+/home/kris271c/Desktop/assignment/cmake-build-debug-gcc9/CMakeFiles/edit_cache.dir

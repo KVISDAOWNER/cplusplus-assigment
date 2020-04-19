@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kris271c/Desktop/assignment/frogs.cpp
+reachability.hpp
+/home/kris271c/Desktop/assignment/reachability.hpp
+iostream
+-
+vector
+-
+list
+-
+functional
+-
+
+/home/kris271c/Desktop/assignment/reachability.hpp
+functional
+-
+queue
+-
+

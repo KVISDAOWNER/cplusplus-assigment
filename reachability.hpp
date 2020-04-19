@@ -16,28 +16,34 @@ enum class search_order_t{
 template <typename StateType>
 class state_space_t{
     public:
-        state_space_t(StateType start_state, std::function<std::vector<StateType>(StateType)>&& successors)
-        :_startState{start_state}, _successors{successors} {}
+        state_space_t(StateType start_state, std::function<std::vector<StateType>(StateType&)> successors)
+                :_startState{start_state}, _successor_fun{successors}
+                {
+                    _successors = _successor_fun(_startState);
+                }
 
-        std::vector<StateType> check(std::function<bool(StateType)> goalPredicate);
-    private:
+        std::vector<StateType> check(std::function<bool(StateType)> goalPredicate) {
+            auto res = _successor_fun(_startState);
+            return std::vector<StateType>();
+        }
+
+private:
         StateType&                                          _startState;
-        std::function<std::vector<StateType>(StateType)>&   _successors;
-    //TODO fill out
+
+        std::function<std::vector<StateType>(StateType&)>   _successor_fun;
+        std::vector<StateType>                              _successors;
+
+        //TODO fill out
 };
 
-template<typename StateType>
-std::vector<StateType> state_space_t<StateType>::check(std::function<bool(StateType)> goalPredicate) {
-    return std::vector<StateType>();
-}
-
 
 template<typename StateType>
-std::function<std::vector<StateType>(StateType)> successors(std::function<std::vector<std::function<void(StateType&)>> (const StateType&)> transitions) {
-    return [&](StateType startState){
+std::function<std::vector<StateType>(StateType&)> successors(std::function<std::vector<std::function<void(StateType&)>> (const StateType&)> transitions) {
+    return [&transitions](StateType& startState){
 
         auto states = std::vector<StateType>(); //results
         auto frontier = std::queue<StateType>(); //frontier with states to transition from
+        states.push_back(startState);
         frontier.push(startState);
 
         while(!frontier.empty()){
