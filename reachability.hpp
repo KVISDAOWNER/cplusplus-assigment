@@ -7,6 +7,7 @@
 
 #include <functional>
 #include <queue>
+#include <iostream>
 
 enum class search_order_t{
     breadth_first, depth_first //TODO fill out
@@ -23,12 +24,13 @@ class state_space_t{
                 }
 
         std::vector<StateType> check(std::function<bool(StateType)> goalPredicate) {
+            auto waiting = std::vector<StateType>();
             auto res = _successor_fun(_startState);
             return std::vector<StateType>();
         }
 
 private:
-        StateType&                                          _startState;
+        StateType                                           _startState;
 
         std::function<std::vector<StateType>(StateType&)>   _successor_fun;
         std::vector<StateType>                              _successors;
@@ -39,24 +41,13 @@ private:
 
 template<typename StateType>
 std::function<std::vector<StateType>(StateType&)> successors(std::function<std::vector<std::function<void(StateType&)>> (const StateType&)> transitions) {
-    return [&transitions](StateType& startState){
-
+    return [&transitions](StateType startState){
         auto states = std::vector<StateType>(); //results
-        auto frontier = std::queue<StateType>(); //frontier with states to transition from
-        states.push_back(startState);
-        frontier.push(startState);
-
-        while(!frontier.empty()){
-            auto curState = frontier.front();
-            frontier.pop();
-            auto functions = transitions(curState);
-            for (const auto& transition: functions) {
-                StateType stateCpy;
-                stateCpy = curState;
-                transition(stateCpy);
-                frontier.push(stateCpy);
-                states.push_back(stateCpy);
-            }
+        auto functions = transitions(startState);
+        for (const auto& transition: functions) {
+            StateType stateCpy = startState;
+            transition(stateCpy);
+            states.push_back(stateCpy);
         }
         return states;
     }; //TODO lav refs her for optimization
