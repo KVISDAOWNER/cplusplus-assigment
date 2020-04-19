@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/assignment.dir/main.cpp.o CMakeFiles/assignment.dir/frogs.cpp.o  -o assignment 
