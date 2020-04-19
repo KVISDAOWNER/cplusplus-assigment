@@ -99,7 +99,7 @@ void explain()
         std::cout << "Solution: a trace of " << trace.size() << " states\n";
         std::cout << trace; // print solution
     }
-    std::cout<< "hallo";
+    std::cout<< "hallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallo";
 }
 
 void solve(size_t frogs, search_order_t order = search_order_t::breadth_first)
@@ -118,13 +118,13 @@ void solve(size_t frogs, search_order_t order = search_order_t::breadth_first)
             std::move(start),                 // initial state
             successors<stones_t>(transitions) // successor-generating function from your library
     };
-    /*auto solutions = space.check(
+    auto solutions = space.check(
             [finish=std::move(finish)](const stones_t& state){ return state==finish; },
             order);
     for (auto&& trace: solutions) {
         std::cout << "Solution: trace of " << trace.size() << " states\n";
 
-    }*/
+    }
 }
 
 int main()

@@ -16,8 +16,9 @@
     <list default="true" id="1a50008f-f0b3-490e-8d7d-4934db972b6c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/frogs.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/frogs.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/frogs.cpp.o" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/frogs" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/frogs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frogs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/frogs.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reachability.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/reachability.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +74,7 @@
       <workItem from="1587211290591" duration="17463000" />
       <workItem from="1587235613496" duration="757000" />
       <workItem from="1587288318004" duration="12364000" />
-      <workItem from="1587324291868" duration="943000" />
+      <workItem from="1587324291868" duration="15613000" />
     </task>
     <servers />
   </component>
@@ -101,54 +102,54 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="776" y="311" width="424" height="491" key="FileChooserDialogImpl/70.27.1850.1053@70.27.1850.1053" timestamp="1587306284507" />
-    <state width="1804" height="232" key="GridCell.Tab.0.bottom" timestamp="1587324718212">
+    <state width="1804" height="232" key="GridCell.Tab.0.bottom" timestamp="1587339584663">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.0.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587324718212" />
-    <state width="1804" height="232" key="GridCell.Tab.0.center" timestamp="1587324718211">
+    <state width="1804" height="232" key="GridCell.Tab.0.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587339584663" />
+    <state width="1804" height="232" key="GridCell.Tab.0.center" timestamp="1587339584662">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.0.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587324718211" />
-    <state width="1804" height="232" key="GridCell.Tab.0.left" timestamp="1587324718211">
+    <state width="1804" height="232" key="GridCell.Tab.0.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587339584662" />
+    <state width="1804" height="232" key="GridCell.Tab.0.left" timestamp="1587339584662">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.0.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587324718211" />
-    <state width="1804" height="232" key="GridCell.Tab.0.right" timestamp="1587324718212">
+    <state width="1804" height="232" key="GridCell.Tab.0.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587339584662" />
+    <state width="1804" height="232" key="GridCell.Tab.0.right" timestamp="1587339584663">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.0.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587324718212" />
-    <state width="1804" height="232" key="GridCell.Tab.1.bottom" timestamp="1587324718942">
+    <state width="1804" height="232" key="GridCell.Tab.0.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587339584663" />
+    <state width="1804" height="232" key="GridCell.Tab.1.bottom" timestamp="1587339584663">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.1.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587324718942" />
-    <state width="1804" height="232" key="GridCell.Tab.1.center" timestamp="1587324718942">
+    <state width="1804" height="232" key="GridCell.Tab.1.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587339584663" />
+    <state width="1804" height="232" key="GridCell.Tab.1.center" timestamp="1587339584663">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.1.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587324718942" />
-    <state width="1804" height="232" key="GridCell.Tab.1.left" timestamp="1587324718941">
+    <state width="1804" height="232" key="GridCell.Tab.1.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587339584663" />
+    <state width="1804" height="232" key="GridCell.Tab.1.left" timestamp="1587339584663">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.1.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587324718941" />
-    <state width="1804" height="232" key="GridCell.Tab.1.right" timestamp="1587324718942">
+    <state width="1804" height="232" key="GridCell.Tab.1.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587339584663" />
+    <state width="1804" height="232" key="GridCell.Tab.1.right" timestamp="1587339584663">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.1.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587324718942" />
-    <state width="1804" height="232" key="GridCell.Tab.2.bottom" timestamp="1587324717749">
+    <state width="1804" height="232" key="GridCell.Tab.1.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587339584663" />
+    <state width="1804" height="232" key="GridCell.Tab.2.bottom" timestamp="1587339584664">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.2.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587324717749" />
-    <state width="1804" height="232" key="GridCell.Tab.2.center" timestamp="1587324717748">
+    <state width="1804" height="232" key="GridCell.Tab.2.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587339584664" />
+    <state width="1804" height="232" key="GridCell.Tab.2.center" timestamp="1587339584664">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.2.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587324717748" />
-    <state width="1804" height="232" key="GridCell.Tab.2.left" timestamp="1587324717748">
+    <state width="1804" height="232" key="GridCell.Tab.2.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587339584664" />
+    <state width="1804" height="232" key="GridCell.Tab.2.left" timestamp="1587339584663">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.2.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587324717748" />
-    <state width="1804" height="232" key="GridCell.Tab.2.right" timestamp="1587324717749">
+    <state width="1804" height="232" key="GridCell.Tab.2.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587339584663" />
+    <state width="1804" height="232" key="GridCell.Tab.2.right" timestamp="1587339584664">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.2.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587324717749" />
+    <state width="1804" height="232" key="GridCell.Tab.2.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587339584664" />
     <state x="806" y="217" width="1114" height="737" key="SettingsEditor" timestamp="1587312932207">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
@@ -157,6 +158,10 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="651" y="381" key="com.intellij.ide.util.TipDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1587324291322" />
+    <state x="658" y="259" key="search.everywhere.popup" timestamp="1587326602406">
+      <screen x="70" y="27" width="1850" height="1053" />
+    </state>
+    <state x="658" y="259" key="search.everywhere.popup/70.27.1850.1053@70.27.1850.1053" timestamp="1587326602406" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -167,14 +172,29 @@
           <option name="timeStamp" value="104" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/reachability.hpp</url>
-          <line>27</line>
-          <option name="timeStamp" value="158" />
+          <url>file://$PROJECT_DIR$/frogs.cpp</url>
+          <line>101</line>
+          <option name="timeStamp" value="185" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/reachability.hpp</url>
-          <line>28</line>
-          <option name="timeStamp" value="162" />
+          <line>71</line>
+          <option name="timeStamp" value="191" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/reachability.hpp</url>
+          <line>54</line>
+          <option name="timeStamp" value="195" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/reachability.hpp</url>
+          <line>52</line>
+          <option name="timeStamp" value="197" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/reachability.hpp</url>
+          <line>51</line>
+          <option name="timeStamp" value="199" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

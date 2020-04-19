@@ -8,9 +8,12 @@
 #include <functional>
 #include <queue>
 #include <iostream>
+#include <stack>
+
+
 
 enum class search_order_t{
-    breadth_first, depth_first //TODO fill out
+    breadth_first, depth_first
 };
 
 
@@ -18,23 +21,70 @@ template <typename StateType>
 class state_space_t{
     public:
         state_space_t(StateType start_state, std::function<std::vector<StateType>(StateType&)> successors)
-                :_startState{start_state}, _successor_fun{successors}
-                {
-                    _successors = _successor_fun(_startState);
-                }
-
-        std::vector<StateType> check(std::function<bool(StateType)> goalPredicate) {
-            auto waiting = std::vector<StateType>();
-            auto res = _successor_fun(_startState);
-            return std::vector<StateType>();
+        : _start_state{start_state}, _successor_fun{successors}
+        {
+            _successors = _successor_fun(_start_state);
         }
 
+        template<search_order_t o>
+        struct container;
+
+        template<>
+        struct container <search_order_t::breadth_first> {
+            std::queue<StateType> get() {
+                return std::queue<StateType>();
+            }
+        };
+
+        template<>
+        struct container <search_order_t::depth_first> {
+            std::stack<StateType> get() {
+                return std::stack<StateType>();
+            }
+        };
+
+        //static constexpr search_order_t test = search_order_t::depth_first;
+        //static constexpr search_order_t test2 = search_order_t::depth_first;
+        std::vector<StateType> check(std::function<bool(StateType)> goal_predicate, search_order_t order = search_order_t::breadth_first) {
+            auto goal_states = std::vector<StateType>();
+
+
+            auto waiting = container<order>().get();
+            waiting.push(_start_state);
+
+            auto seen = std::vector<StateType>();
+
+            while(!waiting.empty()){
+                auto state = pop(waiting);
+
+                if(goal_predicate(state)){
+                    goal_states.push_back(state);
+                }
+
+                for(auto n_state: _successor_fun(state)){
+                    if(true) //not seen before? //TODO
+                    {
+                        waiting.push(n_state);
+                    }
+                }
+
+            }
+            return goal_states;
+        }
+
+
 private:
-        StateType                                           _startState;
+        StateType                                           _start_state;
 
         std::function<std::vector<StateType>(StateType&)>   _successor_fun;
         std::vector<StateType>                              _successors;
 
+
+        template <typename T>
+        T pop(std::stack<T>& s) { T v = s.top; s.pop(); return v; } //TODO optimize?
+
+        template <typename T>
+        T pop(std::queue<T>& q) { T v = q.front(); q.pop(); return v; } //TODO optimize?
         //TODO fill out
 };
 
