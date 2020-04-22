@@ -84,6 +84,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/kris271c/Desktop/assignment/family.cpp">
+			<Option target="frogs"/>
+		</Unit>
 		<Unit filename="/home/kris271c/Desktop/assignment/frogs.cpp">
 			<Option target="frogs"/>
 		</Unit>

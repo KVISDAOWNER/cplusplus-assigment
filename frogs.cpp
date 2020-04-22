@@ -132,6 +132,7 @@ void solve(size_t frogs, search_order_t order = search_order_t::breadth_first)
             order);
     for (auto&& trace: solutions) {
         std::cout << "Solution: trace of " << trace.size() << " states\n";
+        std::cout << trace;
     }
 }
 

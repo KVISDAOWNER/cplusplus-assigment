@@ -13,12 +13,6 @@
 #include <set>
 
 
-/*namespace search_order_t{
-    struct search_order_t{virtual ~search_order_t() = default;};
-    struct breadth_first: search_order_t{};
-    struct depth_first: search_order_t{};
-};*/
-
 enum class search_order_t{
     breadth_first, depth_first
 };
@@ -38,16 +32,17 @@ class state_space_t{
 
             std::map<StateType,std::vector<StateType>> parent_map = std::map<StateType,std::vector<StateType>>(); //for trace and check if visited
             std::set<StateType> seen = std::set<StateType>();
-
             auto goal_states = std::vector<StateType>();
+            auto goal_state_found = false;
             auto waiting = std::vector<StateType>();
             waiting.push_back(_start_state);
 
-            StateType last_state = _start_state;
-            while(!waiting.empty()){
+            while(!waiting.empty() && !goal_state_found){
                 auto state = pop(waiting);
-                if(goal_predicate(state))
+                if(goal_predicate(state)){
+                    goal_state_found = true;
                     goal_states.push_back(state);
+                }
                 if(!seen.count(state)) { //if not seen before?
                     seen.insert(state);
                     for(const auto& n_state: _successor_fun(state)){
@@ -80,7 +75,6 @@ class state_space_t{
 
 private:
         StateType                                           _start_state;
-
         std::function<std::vector<StateType>(StateType&)>   _successor_fun;
         std::vector<StateType>                              _successors;
 

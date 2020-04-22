@@ -123,6 +123,33 @@ frogs/fast:
 	$(MAKE) -f CMakeFiles/frogs.dir/build.make CMakeFiles/frogs.dir/build
 .PHONY : frogs/fast
 
+family.o: family.cpp.o
+
+.PHONY : family.o
+
+# target to build an object file
+family.cpp.o:
+	$(MAKE) -f CMakeFiles/frogs.dir/build.make CMakeFiles/frogs.dir/family.cpp.o
+.PHONY : family.cpp.o
+
+family.i: family.cpp.i
+
+.PHONY : family.i
+
+# target to preprocess a source file
+family.cpp.i:
+	$(MAKE) -f CMakeFiles/frogs.dir/build.make CMakeFiles/frogs.dir/family.cpp.i
+.PHONY : family.cpp.i
+
+family.s: family.cpp.s
+
+.PHONY : family.s
+
+# target to generate assembly for a file
+family.cpp.s:
+	$(MAKE) -f CMakeFiles/frogs.dir/build.make CMakeFiles/frogs.dir/family.cpp.s
+.PHONY : family.cpp.s
+
 frogs.o: frogs.cpp.o
 
 .PHONY : frogs.o
@@ -159,6 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... frogs"
 	@echo "... edit_cache"
+	@echo "... family.o"
+	@echo "... family.i"
+	@echo "... family.s"
 	@echo "... frogs.o"
 	@echo "... frogs.i"
 	@echo "... frogs.s"

@@ -74,12 +74,12 @@ preinstall:
 CMakeFiles/frogs.dir/all:
 	$(MAKE) -f CMakeFiles/frogs.dir/build.make CMakeFiles/frogs.dir/depend
 	$(MAKE) -f CMakeFiles/frogs.dir/build.make CMakeFiles/frogs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kris271c/Desktop/assignment/cmake-build-debug-gcc9/CMakeFiles --progress-num=1,2 "Built target frogs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kris271c/Desktop/assignment/cmake-build-debug-gcc9/CMakeFiles --progress-num=1,2,3 "Built target frogs"
 .PHONY : CMakeFiles/frogs.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/frogs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kris271c/Desktop/assignment/cmake-build-debug-gcc9/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kris271c/Desktop/assignment/cmake-build-debug-gcc9/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/frogs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/kris271c/Desktop/assignment/cmake-build-debug-gcc9/CMakeFiles 0
 .PHONY : CMakeFiles/frogs.dir/rule

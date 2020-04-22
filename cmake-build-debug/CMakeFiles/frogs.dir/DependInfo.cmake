@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/kris271c/Desktop/assignment/family.cpp" "/home/kris271c/Desktop/assignment/cmake-build-debug/CMakeFiles/frogs.dir/family.cpp.o"
   "/home/kris271c/Desktop/assignment/frogs.cpp" "/home/kris271c/Desktop/assignment/cmake-build-debug/CMakeFiles/frogs.dir/frogs.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
