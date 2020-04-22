@@ -10,6 +10,7 @@
 #include <iostream>
 #include <stack>
 #include <map>
+#include <set>
 
 
 /*namespace search_order_t{
@@ -31,11 +32,12 @@ class state_space_t{
             _successors = _successor_fun(_start_state);
         }
 
-        std::vector<StateType> check(std::function<bool(StateType)> goal_predicate, search_order_t order = search_order_t::breadth_first) {
+        std::vector<std::vector<StateType>> check(std::function<bool(StateType)> goal_predicate, search_order_t order = search_order_t::breadth_first) {
             typedef search_order_t search;
             StateType (*pop)    (std::vector<StateType>&) { (order == search::breadth_first)? pop_queue : pop_stack}; //TODO ref i stedet?
 
             std::map<StateType,std::vector<StateType>> parent_map = std::map<StateType,std::vector<StateType>>(); //for trace and check if visited
+            std::set<StateType> seen = std::set<StateType>();
 
             auto goal_states = std::vector<StateType>();
             auto waiting = std::vector<StateType>();
@@ -46,21 +48,33 @@ class state_space_t{
                 auto state = pop(waiting);
                 if(goal_predicate(state))
                     goal_states.push_back(state);
-                if(!parent_map.count(state)) { //not seen before? //TODO
-                    parent_map[state].push_back(last_state);
-                    for(auto n_state: _successor_fun(state)){
+                if(!seen.count(state)) { //if not seen before?
+                    seen.insert(state);
+                    for(const auto& n_state: _successor_fun(state)){
+                        //if(!parent_map.count(state)) //check to not do duplicate parents
+                        parent_map[n_state].push_back(state);
                         waiting.push_back(n_state);
                     }
                 }
                 else{
-                    //crate std:vector
+                    //crate std:vector //TODO maybe duplicate keys will be an issue with the other puzzles
                 }
             }
 
-            //Make trace nice
-            
+            auto solutionTrace = std::vector<std::vector<StateType>>();
+            //Make tracee
+            auto trace = std::vector<StateType>();
+            for (auto& state: goal_states) {
+                trace.push_back(state);
+                while(state != _start_state){
+                    state = parent_map.find(state)->second[0]; //Here we guarantee that state is a key //TODO branch out when multiple parents
+                    trace.push_back(state);
+                }
+                std::reverse(std::begin(trace), std::end(trace));
+                solutionTrace.push_back(trace);
+            }
 
-            return goal_states;
+            return solutionTrace;
         }
 
 
@@ -89,6 +103,5 @@ std::function<std::vector<StateType>(StateType&)> successors(std::function<std::
         return states;
     }; //TODO lav refs her for optimization
 }
-
 
 #endif //ASSIGNMENT_REACHABILITY_HPP

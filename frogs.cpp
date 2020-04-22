@@ -23,7 +23,16 @@ std::ostream& operator<<(std::ostream& os, const stones_t stones){
             case frog::brown: os<<"B";break;
         }
     }
-    os << "\n";
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const std::vector<stones_t> stones_trace){
+    const int size = stones_trace[0].size();
+    for(const auto& stones: stones_trace){
+        os << "State of "<<  size <<" stones: ";
+        os << stones;
+        os << "\n";
+    }
     return os;
 }
 
@@ -100,10 +109,9 @@ void explain()
         std::cout << "Solution: a trace of " << trace.size() << " states\n";
         std::cout << trace; // print solution
     }
-    std::cout<< "hallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallo";
 }
 
-void solve(size_t frogs, search_order_t order = search_order_t::breadth_first) //TODO cheated a little here
+void solve(size_t frogs, search_order_t order = search_order_t::breadth_first)
 {
     const auto stones = frogs*2+1; // frogs on either side and 1 empty in the middle
     auto start = stones_t(stones, frog::empty);  // initially all empty
@@ -124,7 +132,6 @@ void solve(size_t frogs, search_order_t order = search_order_t::breadth_first) /
             order);
     for (auto&& trace: solutions) {
         std::cout << "Solution: trace of " << trace.size() << " states\n";
-
     }
 }
 
