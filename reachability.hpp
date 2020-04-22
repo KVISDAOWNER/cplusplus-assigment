@@ -9,13 +9,18 @@
 #include <queue>
 #include <iostream>
 #include <stack>
+#include <map>
 
 
+/*namespace search_order_t{
+    struct search_order_t{virtual ~search_order_t() = default;};
+    struct breadth_first: search_order_t{};
+    struct depth_first: search_order_t{};
+};*/
 
 enum class search_order_t{
     breadth_first, depth_first
 };
-
 
 template <typename StateType>
 class state_space_t{
@@ -26,49 +31,35 @@ class state_space_t{
             _successors = _successor_fun(_start_state);
         }
 
-        template<search_order_t o>
-        struct container;
-
-        template<>
-        struct container <search_order_t::breadth_first> {
-            std::queue<StateType> get() {
-                return std::queue<StateType>();
-            }
-        };
-
-        template<>
-        struct container <search_order_t::depth_first> {
-            std::stack<StateType> get() {
-                return std::stack<StateType>();
-            }
-        };
-
-        //static constexpr search_order_t test = search_order_t::depth_first;
-        //static constexpr search_order_t test2 = search_order_t::depth_first;
         std::vector<StateType> check(std::function<bool(StateType)> goal_predicate, search_order_t order = search_order_t::breadth_first) {
+            typedef search_order_t search;
+            StateType (*pop)    (std::vector<StateType>&) { (order == search::breadth_first)? pop_queue : pop_stack}; //TODO ref i stedet?
+
+            std::map<StateType,std::vector<StateType>> parent_map = std::map<StateType,std::vector<StateType>>(); //for trace and check if visited
+
             auto goal_states = std::vector<StateType>();
+            auto waiting = std::vector<StateType>();
+            waiting.push_back(_start_state);
 
-
-            auto waiting = container<order>().get();
-            waiting.push(_start_state);
-
-            auto seen = std::vector<StateType>();
-
+            StateType last_state = _start_state;
             while(!waiting.empty()){
                 auto state = pop(waiting);
-
-                if(goal_predicate(state)){
+                if(goal_predicate(state))
                     goal_states.push_back(state);
-                }
-
-                for(auto n_state: _successor_fun(state)){
-                    if(true) //not seen before? //TODO
-                    {
-                        waiting.push(n_state);
+                if(!parent_map.count(state)) { //not seen before? //TODO
+                    parent_map[state].push_back(last_state);
+                    for(auto n_state: _successor_fun(state)){
+                        waiting.push_back(n_state);
                     }
                 }
-
+                else{
+                    //crate std:vector
+                }
             }
+
+            //Make trace nice
+            
+
             return goal_states;
         }
 
@@ -79,12 +70,8 @@ private:
         std::function<std::vector<StateType>(StateType&)>   _successor_fun;
         std::vector<StateType>                              _successors;
 
-
-        template <typename T>
-        T pop(std::stack<T>& s) { T v = s.top; s.pop(); return v; } //TODO optimize?
-
-        template <typename T>
-        T pop(std::queue<T>& q) { T v = q.front(); q.pop(); return v; } //TODO optimize?
+        static StateType pop_stack(std::vector<StateType>& s) { StateType v = s.back(); s.pop_back(); return v; } //TODO optimize? if(data.back()>-1) then back(); og ikke static?
+        static StateType pop_queue(std::vector<StateType>& q) { StateType v = q.front(); q.erase( q.begin() ); return v; } //TODO optimize? og ikke static?
         //TODO fill out
 };
 

@@ -23,6 +23,7 @@ std::ostream& operator<<(std::ostream& os, const stones_t stones){
             case frog::brown: os<<"B";break;
         }
     }
+    os << "\n";
     return os;
 }
 
@@ -102,7 +103,7 @@ void explain()
     std::cout<< "hallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallohallo";
 }
 
-void solve(size_t frogs, search_order_t order = search_order_t::breadth_first)
+void solve(size_t frogs, search_order_t order = search_order_t::breadth_first) //TODO cheated a little here
 {
     const auto stones = frogs*2+1; // frogs on either side and 1 empty in the middle
     auto start = stones_t(stones, frog::empty);  // initially all empty
