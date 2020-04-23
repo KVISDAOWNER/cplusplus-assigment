@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named crossing
+
+# Build rule for target.
+crossing: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 crossing
+.PHONY : crossing
+
+# fast build rule for target.
+crossing/fast:
+	$(MAKE) -f CMakeFiles/crossing.dir/build.make CMakeFiles/crossing.dir/build
+.PHONY : crossing/fast
+
+#=============================================================================
 # Target rules for targets named frogs
 
 # Build rule for target.
@@ -123,13 +136,53 @@ frogs/fast:
 	$(MAKE) -f CMakeFiles/frogs.dir/build.make CMakeFiles/frogs.dir/build
 .PHONY : frogs/fast
 
+#=============================================================================
+# Target rules for targets named family
+
+# Build rule for target.
+family: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 family
+.PHONY : family
+
+# fast build rule for target.
+family/fast:
+	$(MAKE) -f CMakeFiles/family.dir/build.make CMakeFiles/family.dir/build
+.PHONY : family/fast
+
+crossing.o: crossing.cpp.o
+
+.PHONY : crossing.o
+
+# target to build an object file
+crossing.cpp.o:
+	$(MAKE) -f CMakeFiles/crossing.dir/build.make CMakeFiles/crossing.dir/crossing.cpp.o
+.PHONY : crossing.cpp.o
+
+crossing.i: crossing.cpp.i
+
+.PHONY : crossing.i
+
+# target to preprocess a source file
+crossing.cpp.i:
+	$(MAKE) -f CMakeFiles/crossing.dir/build.make CMakeFiles/crossing.dir/crossing.cpp.i
+.PHONY : crossing.cpp.i
+
+crossing.s: crossing.cpp.s
+
+.PHONY : crossing.s
+
+# target to generate assembly for a file
+crossing.cpp.s:
+	$(MAKE) -f CMakeFiles/crossing.dir/build.make CMakeFiles/crossing.dir/crossing.cpp.s
+.PHONY : crossing.cpp.s
+
 family.o: family.cpp.o
 
 .PHONY : family.o
 
 # target to build an object file
 family.cpp.o:
-	$(MAKE) -f CMakeFiles/frogs.dir/build.make CMakeFiles/frogs.dir/family.cpp.o
+	$(MAKE) -f CMakeFiles/family.dir/build.make CMakeFiles/family.dir/family.cpp.o
 .PHONY : family.cpp.o
 
 family.i: family.cpp.i
@@ -138,7 +191,7 @@ family.i: family.cpp.i
 
 # target to preprocess a source file
 family.cpp.i:
-	$(MAKE) -f CMakeFiles/frogs.dir/build.make CMakeFiles/frogs.dir/family.cpp.i
+	$(MAKE) -f CMakeFiles/family.dir/build.make CMakeFiles/family.dir/family.cpp.i
 .PHONY : family.cpp.i
 
 family.s: family.cpp.s
@@ -147,7 +200,7 @@ family.s: family.cpp.s
 
 # target to generate assembly for a file
 family.cpp.s:
-	$(MAKE) -f CMakeFiles/frogs.dir/build.make CMakeFiles/frogs.dir/family.cpp.s
+	$(MAKE) -f CMakeFiles/family.dir/build.make CMakeFiles/family.dir/family.cpp.s
 .PHONY : family.cpp.s
 
 frogs.o: frogs.cpp.o
@@ -183,9 +236,14 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... crossing"
 	@echo "... rebuild_cache"
 	@echo "... frogs"
 	@echo "... edit_cache"
+	@echo "... family"
+	@echo "... crossing.o"
+	@echo "... crossing.i"
+	@echo "... crossing.s"
 	@echo "... family.o"
 	@echo "... family.i"
 	@echo "... family.s"

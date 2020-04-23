@@ -21,10 +21,7 @@ template <typename StateType>
 class state_space_t{
     public:
         state_space_t(StateType start_state, std::function<std::vector<StateType>(StateType&)> successors)
-        : _start_state{start_state}, _successor_fun{successors}
-        {
-            _successors = _successor_fun(_start_state);
-        }
+        : _start_state{start_state}, _successor_fun{successors}{}
 
         std::vector<std::vector<StateType>> check(std::function<bool(StateType)> goal_predicate, search_order_t order = search_order_t::breadth_first) {
             typedef search_order_t search;
@@ -76,7 +73,6 @@ class state_space_t{
 private:
         StateType                                           _start_state;
         std::function<std::vector<StateType>(StateType&)>   _successor_fun;
-        std::vector<StateType>                              _successors;
 
         static StateType pop_stack(std::vector<StateType>& s) { StateType v = s.back(); s.pop_back(); return v; } //TODO optimize? if(data.back()>-1) then back(); og ikke static?
         static StateType pop_queue(std::vector<StateType>& q) { StateType v = q.front(); q.erase( q.begin() ); return v; } //TODO optimize? og ikke static?
@@ -84,9 +80,26 @@ private:
 };
 
 
-template<typename StateType>
-std::function<std::vector<StateType>(StateType&)> successors(std::function<std::vector<std::function<void(StateType&)>> (const StateType&)> transitions) {
-    return [&transitions](StateType startState){
+template <typename T, typename = void> //Not Container //TODO Why void here?
+struct is_container: std::false_type {};
+
+template <typename C>
+struct is_container<C,
+        std::void_t<
+                typename C::iterator,
+                typename C::const_iterator,
+                decltype(std::begin(std::declval<C&>())),
+                decltype(std::end(std::declval<C&>()))
+        >
+>: std::true_type {};
+
+template<typename Container>
+constexpr auto is_container_v = is_container<Container>::value;
+
+template<typename StateType, typename Container>
+typename std::enable_if<is_container_v<Container>, std::function<std::vector<StateType>(StateType&)>>::type
+successors(Container transitions (const StateType&)) {
+    return [transitions](const StateType& startState){ //TODO hvorfor kan den ikke tage &transitions?
         auto states = std::vector<StateType>(); //results
         auto functions = transitions(startState);
         for (const auto& transition: functions) {
