@@ -17,43 +17,11 @@
   <component name="ChangeListManager">
     <list default="true" id="1a50008f-f0b3-490e-8d7d-4934db972b6c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/frogs.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/PuzzleEngine.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/PuzzleEngine.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/frogs" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/frogs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/frogs.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/frogs.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/frogs.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/frogs.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/frogs.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/frogs.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/frogs.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/frogs.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/frogs.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/frogs.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/PuzzleEngine.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/PuzzleEngine.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/crossing.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/crossing.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/frogs" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/frogs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/frogs.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/frogs.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/frogs.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/frogs.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/frogs.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/frogs.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/frogs.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/frogs.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/frogs.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/frogs.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/PuzzleEngine.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/PuzzleEngine.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crossing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/crossing.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/family.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/family.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frogs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/frogs.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reachability.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/reachability.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +56,7 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build" />
   </component>
-  <component name="RunManager" selected="CMake Application.frogs">
+  <component name="RunManager" selected="CMake Application.crossing">
     <configuration name="crossing" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="PuzzleEngine" TARGET_NAME="crossing" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="PuzzleEngine" RUN_TARGET_NAME="crossing">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -128,7 +96,7 @@
       <workItem from="1587364258715" duration="14702000" />
       <workItem from="1587413470792" duration="1849000" />
       <workItem from="1587582554696" duration="4879000" />
-      <workItem from="1587635556488" duration="2175000" />
+      <workItem from="1587635556488" duration="5034000" />
     </task>
     <servers />
   </component>
@@ -160,54 +128,54 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="776" y="311" width="424" height="491" key="FileChooserDialogImpl/70.27.1850.1053@70.27.1850.1053" timestamp="1587306284507" />
-    <state width="1804" height="232" key="GridCell.Tab.0.bottom" timestamp="1587638091754">
+    <state width="1804" height="232" key="GridCell.Tab.0.bottom" timestamp="1587640969618">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.0.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587638091754" />
-    <state width="1804" height="232" key="GridCell.Tab.0.center" timestamp="1587638091753">
+    <state width="1804" height="232" key="GridCell.Tab.0.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587640969618" />
+    <state width="1804" height="232" key="GridCell.Tab.0.center" timestamp="1587640969617">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.0.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587638091753" />
-    <state width="1804" height="232" key="GridCell.Tab.0.left" timestamp="1587638091753">
+    <state width="1804" height="232" key="GridCell.Tab.0.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587640969617" />
+    <state width="1804" height="232" key="GridCell.Tab.0.left" timestamp="1587640969617">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.0.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587638091753" />
-    <state width="1804" height="232" key="GridCell.Tab.0.right" timestamp="1587638091754">
+    <state width="1804" height="232" key="GridCell.Tab.0.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587640969617" />
+    <state width="1804" height="232" key="GridCell.Tab.0.right" timestamp="1587640969617">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.0.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587638091754" />
-    <state width="1804" height="232" key="GridCell.Tab.1.bottom" timestamp="1587638091653">
+    <state width="1804" height="232" key="GridCell.Tab.0.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587640969617" />
+    <state width="1804" height="232" key="GridCell.Tab.1.bottom" timestamp="1587640969532">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.1.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587638091653" />
-    <state width="1804" height="232" key="GridCell.Tab.1.center" timestamp="1587638091653">
+    <state width="1804" height="232" key="GridCell.Tab.1.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587640969532" />
+    <state width="1804" height="232" key="GridCell.Tab.1.center" timestamp="1587640969532">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.1.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587638091653" />
-    <state width="1804" height="232" key="GridCell.Tab.1.left" timestamp="1587638091653">
+    <state width="1804" height="232" key="GridCell.Tab.1.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587640969532" />
+    <state width="1804" height="232" key="GridCell.Tab.1.left" timestamp="1587640969532">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.1.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587638091653" />
-    <state width="1804" height="232" key="GridCell.Tab.1.right" timestamp="1587638091653">
+    <state width="1804" height="232" key="GridCell.Tab.1.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587640969532" />
+    <state width="1804" height="232" key="GridCell.Tab.1.right" timestamp="1587640969532">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.1.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587638091653" />
-    <state width="1804" height="232" key="GridCell.Tab.2.bottom" timestamp="1587638091654">
+    <state width="1804" height="232" key="GridCell.Tab.1.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587640969532" />
+    <state width="1804" height="232" key="GridCell.Tab.2.bottom" timestamp="1587640969533">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.2.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587638091654" />
-    <state width="1804" height="232" key="GridCell.Tab.2.center" timestamp="1587638091654">
+    <state width="1804" height="232" key="GridCell.Tab.2.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587640969533" />
+    <state width="1804" height="232" key="GridCell.Tab.2.center" timestamp="1587640969533">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.2.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587638091654" />
-    <state width="1804" height="232" key="GridCell.Tab.2.left" timestamp="1587638091654">
+    <state width="1804" height="232" key="GridCell.Tab.2.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587640969533" />
+    <state width="1804" height="232" key="GridCell.Tab.2.left" timestamp="1587640969532">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.2.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587638091654" />
-    <state width="1804" height="232" key="GridCell.Tab.2.right" timestamp="1587638091654">
+    <state width="1804" height="232" key="GridCell.Tab.2.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587640969532" />
+    <state width="1804" height="232" key="GridCell.Tab.2.right" timestamp="1587640969533">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.2.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587638091654" />
+    <state width="1804" height="232" key="GridCell.Tab.2.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587640969533" />
     <state x="806" y="217" width="1114" height="737" key="SettingsEditor" timestamp="1587312932207">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
@@ -220,10 +188,10 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="648" y="150" width="683" height="813" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/70.27.1850.1053@70.27.1850.1053" timestamp="1587371118700" />
-    <state x="739" y="197" width="501" height="720" key="refactoring.ChangeSignatureDialog" timestamp="1587586776157">
+    <state x="739" y="197" width="501" height="720" key="refactoring.ChangeSignatureDialog" timestamp="1587640903118">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="739" y="197" width="501" height="720" key="refactoring.ChangeSignatureDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1587586776157" />
+    <state x="739" y="197" width="501" height="720" key="refactoring.ChangeSignatureDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1587640903118" />
     <state x="658" y="259" key="search.everywhere.popup" timestamp="1587326602406">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>

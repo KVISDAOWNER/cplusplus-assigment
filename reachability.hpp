@@ -20,8 +20,8 @@ enum class search_order_t{
 template <typename StateType>
 class state_space_t{
     public:
-        state_space_t(StateType start_state, std::function<std::vector<StateType>(StateType&)> successors)
-        : _start_state{start_state}, _successor_fun{successors}{}
+        state_space_t(StateType start_state, std::function<std::vector<StateType>(StateType&)> successors, bool (*is_valid) (const StateType&) = [](const StateType&){return true;})
+        : _start_state{start_state}, _successor_fun{successors}, _is_valid{is_valid}{}
 
         std::vector<std::vector<StateType>> check(std::function<bool(StateType)> goal_predicate, search_order_t order = search_order_t::breadth_first) {
             typedef search_order_t search;
@@ -32,7 +32,8 @@ class state_space_t{
             auto goal_states = std::vector<StateType>();
             auto goal_state_found = false;
             auto waiting = std::vector<StateType>();
-            waiting.push_back(_start_state);
+            if(_is_valid(_start_state))
+                waiting.push_back(_start_state);
 
             while(!waiting.empty() && !goal_state_found){
                 auto state = pop(waiting);
@@ -44,8 +45,10 @@ class state_space_t{
                     seen.insert(state);
                     for(const auto& n_state: _successor_fun(state)){
                         //if(!parent_map.count(state)) //check to not do duplicate parents
-                        parent_map[n_state].push_back(state);
-                        waiting.push_back(n_state);
+                        if(_is_valid(n_state)){
+                            parent_map[n_state].push_back(state);
+                            waiting.push_back(n_state);
+                        }
                     }
                 }
                 else{
@@ -73,7 +76,7 @@ class state_space_t{
 private:
         StateType                                           _start_state;
         std::function<std::vector<StateType>(StateType&)>   _successor_fun;
-
+        bool                                                (*_is_valid) (const StateType&);
         static StateType pop_stack(std::vector<StateType>& s) { StateType v = s.back(); s.pop_back(); return v; } //TODO optimize? if(data.back()>-1) then back(); og ikke static?
         static StateType pop_queue(std::vector<StateType>& q) { StateType v = q.front(); q.erase( q.begin() ); return v; } //TODO optimize? og ikke static?
         //TODO fill out

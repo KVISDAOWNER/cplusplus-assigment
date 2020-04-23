@@ -29,9 +29,7 @@ std::ostream& operator<<(std::ostream& os, const stones_t stones){
 std::ostream& operator<<(std::ostream& os, const std::vector<stones_t> stones_trace){
     const int size = stones_trace[0].size();
     for(const auto& stones: stones_trace){
-        os << "State of "<<  size <<" stones: ";
-        os << stones;
-        os << "\n";
+        os << "State of "<<  size <<" stones: " << stones  << "\n";
     }
     return os;
 }

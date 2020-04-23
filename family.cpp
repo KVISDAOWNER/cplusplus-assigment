@@ -98,6 +98,8 @@ auto transitions(const state_t& s)
 	return res;
 }
 
+void log(const char string[5]);
+
 bool river_crossing_valid(const state_t& s)
 {
 	if (s.boat.passengers > s.boat.capacity) {
@@ -180,6 +182,8 @@ bool river_crossing_valid(const state_t& s)
 	return true;
 }
 
+
+
 struct cost_t {
 	size_t depth{0}; // counts the number of transitions
 	size_t noise{0}; // kids get bored on shore1 and start making noise there
@@ -221,6 +225,11 @@ void solve(CostFn&& cost) { // no type checking: OK hack here, but not good for 
 				std::cout << *state << '\n';
 		}
 	}
+}
+
+
+void log(const char *s) {
+    std::cout<< "LOG: "<< s;
 }
 
 int main() {
