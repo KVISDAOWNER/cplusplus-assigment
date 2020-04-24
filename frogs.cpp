@@ -140,7 +140,6 @@ int main()
     std::cout << "--- Solve with depth-first search: ---\n";
     solve(2, search_order_t::depth_first);
     solve(4); // 20 frogs may take >5.8GB of memory
-    std::cout << "Reached End"; //TODO remove
 }
 /** Sample output:
 Leaping frog puzzle start: GG_BB
