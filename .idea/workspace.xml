@@ -17,19 +17,11 @@
   <component name="ChangeListManager">
     <list default="true" id="1a50008f-f0b3-490e-8d7d-4934db972b6c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/crossing.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/crossing.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/family.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/family.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/CMakeFiles/frogs.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/crossing.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/crossing.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/crossing.dir/crossing.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/crossing.dir/crossing.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/family.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/family.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/frogs.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/frogs.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/frogs.dir/frogs.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/frogs.dir/frogs.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/crossing" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/crossing" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/family.dir/family.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/family.dir/family.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/frogs.dir/frogs.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/family" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/family" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/frogs" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/frogs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crossing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/crossing.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/family.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/family.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frogs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/frogs.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reachability.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/reachability.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +97,7 @@
       <workItem from="1587413470792" duration="1849000" />
       <workItem from="1587582554696" duration="4879000" />
       <workItem from="1587635556488" duration="15522000" />
-      <workItem from="1587715226846" duration="1037000" />
+      <workItem from="1587715226846" duration="12102000" />
     </task>
     <servers />
   </component>
@@ -125,10 +117,10 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="728" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1587587743563" />
-    <state width="525" height="560" key="DebuggerActiveHint" timestamp="1587223414473">
+    <state width="525" height="560" key="DebuggerActiveHint" timestamp="1587721629934">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="525" height="560" key="DebuggerActiveHint/70.27.1850.1053@70.27.1850.1053" timestamp="1587223414473" />
+    <state width="525" height="560" key="DebuggerActiveHint/70.27.1850.1053@70.27.1850.1053" timestamp="1587721629934" />
     <state x="732" y="282" width="515" height="549" key="EnvironmentVariablesDialog" timestamp="1587303746371">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
@@ -137,54 +129,54 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="776" y="311" width="424" height="491" key="FileChooserDialogImpl/70.27.1850.1053@70.27.1850.1053" timestamp="1587306284507" />
-    <state width="1804" height="232" key="GridCell.Tab.0.bottom" timestamp="1587716338449">
+    <state width="1804" height="232" key="GridCell.Tab.0.bottom" timestamp="1587728938246">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.0.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587716338449" />
-    <state width="1804" height="232" key="GridCell.Tab.0.center" timestamp="1587716338449">
+    <state width="1804" height="232" key="GridCell.Tab.0.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587728938246" />
+    <state width="1804" height="232" key="GridCell.Tab.0.center" timestamp="1587728938245">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.0.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587716338449" />
-    <state width="1804" height="232" key="GridCell.Tab.0.left" timestamp="1587716338449">
+    <state width="1804" height="232" key="GridCell.Tab.0.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587728938245" />
+    <state width="1804" height="232" key="GridCell.Tab.0.left" timestamp="1587728938244">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.0.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587716338449" />
-    <state width="1804" height="232" key="GridCell.Tab.0.right" timestamp="1587716338449">
+    <state width="1804" height="232" key="GridCell.Tab.0.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587728938244" />
+    <state width="1804" height="232" key="GridCell.Tab.0.right" timestamp="1587728938246">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.0.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587716338449" />
-    <state width="1804" height="232" key="GridCell.Tab.1.bottom" timestamp="1587716339143">
+    <state width="1804" height="232" key="GridCell.Tab.0.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587728938246" />
+    <state width="1804" height="232" key="GridCell.Tab.1.bottom" timestamp="1587728938134">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.1.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587716339143" />
-    <state width="1804" height="232" key="GridCell.Tab.1.center" timestamp="1587716339142">
+    <state width="1804" height="232" key="GridCell.Tab.1.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587728938134" />
+    <state width="1804" height="232" key="GridCell.Tab.1.center" timestamp="1587728938133">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.1.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587716339142" />
-    <state width="1804" height="232" key="GridCell.Tab.1.left" timestamp="1587716339142">
+    <state width="1804" height="232" key="GridCell.Tab.1.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587728938133" />
+    <state width="1804" height="232" key="GridCell.Tab.1.left" timestamp="1587728938133">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.1.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587716339142" />
-    <state width="1804" height="232" key="GridCell.Tab.1.right" timestamp="1587716339143">
+    <state width="1804" height="232" key="GridCell.Tab.1.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587728938133" />
+    <state width="1804" height="232" key="GridCell.Tab.1.right" timestamp="1587728938133">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.1.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587716339143" />
-    <state width="1804" height="232" key="GridCell.Tab.2.bottom" timestamp="1587715769294">
+    <state width="1804" height="232" key="GridCell.Tab.1.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587728938133" />
+    <state width="1804" height="232" key="GridCell.Tab.2.bottom" timestamp="1587728938134">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.2.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587715769294" />
-    <state width="1804" height="232" key="GridCell.Tab.2.center" timestamp="1587715769294">
+    <state width="1804" height="232" key="GridCell.Tab.2.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1587728938134" />
+    <state width="1804" height="232" key="GridCell.Tab.2.center" timestamp="1587728938134">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.2.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587715769294" />
-    <state width="1804" height="232" key="GridCell.Tab.2.left" timestamp="1587715769294">
+    <state width="1804" height="232" key="GridCell.Tab.2.center/70.27.1850.1053@70.27.1850.1053" timestamp="1587728938134" />
+    <state width="1804" height="232" key="GridCell.Tab.2.left" timestamp="1587728938134">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.2.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587715769294" />
-    <state width="1804" height="232" key="GridCell.Tab.2.right" timestamp="1587715769294">
+    <state width="1804" height="232" key="GridCell.Tab.2.left/70.27.1850.1053@70.27.1850.1053" timestamp="1587728938134" />
+    <state width="1804" height="232" key="GridCell.Tab.2.right" timestamp="1587728938134">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="232" key="GridCell.Tab.2.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587715769294" />
+    <state width="1804" height="232" key="GridCell.Tab.2.right/70.27.1850.1053@70.27.1850.1053" timestamp="1587728938134" />
     <state x="806" y="217" width="1114" height="737" key="SettingsEditor" timestamp="1587644252727">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>

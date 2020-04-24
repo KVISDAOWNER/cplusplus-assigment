@@ -50,7 +50,7 @@ std::ostream& operator<<(std::ostream& os, const state_t state){
 
     if(state.boat.pos==1){ //boat is traveling
         std::array<int,8> persons = std::array<int,8>();
-        os << "{trv," << state.boat.passengers << state.boat.capacity << "}";
+        os << "{trv," << state.boat.passengers << ";" << state.boat.capacity << "}";
         for (const auto& person: state.persons) {
             switch (person.pos){
                 case 0: os<<",{sh1}";break;
@@ -58,6 +58,7 @@ std::ostream& operator<<(std::ostream& os, const state_t state){
                 case 2: os<<",{SH2}";break;
             }
         }
+        os << "\n";
     }
     return os;
 }
@@ -72,10 +73,33 @@ bool operator<(const person_t& p1, const person_t& p2){
 }
 
 bool operator<(const boat_t& b1, const boat_t& b2){
-    return b1.pos < b2.pos || b1.capacity < b2.capacity || b1.passengers < b2.passengers;
+    if(b1.passengers < b2.passengers)
+        return true;
+    else if (b2.passengers < b1.passengers)
+        return false;
+    else if(b1.pos < b2.pos)
+        return true;
+    else if(b2.pos < b1.pos)
+        return false;
+    else if(b1.capacity < b2.capacity)
+        return true;
+    else if(b2.capacity < b1.capacity)
+        return false;
+    else
+        return false; //all fields are ==
 }
 bool operator<(const state_t& s1, const state_t& s2){
-    return s1.persons < s2.persons || s1.boat < s2.boat;
+    if(s1.boat < s2.boat)
+        return true;
+    else if (s2.boat < s1.boat)
+        return false;
+    for (int i = 0; i < 8; i++) {
+        if(s1.persons[i] < s2.persons[i])
+            return true;
+        else if (s2.persons[i] < s1.persons[i])
+            return false;
+    }
+    return false; //all fields are ==
 }
 
 bool operator!=(const boat_t& b1, const boat_t& b2){
@@ -84,26 +108,6 @@ bool operator!=(const boat_t& b1, const boat_t& b2){
 bool operator!=(const state_t& s1, const state_t& s2){
     return s1.persons != s2.persons || s1.boat != s2.boat;
 }
-/*
-Boat,     Mothr,Fathr,Daug1,Daug2,Son1, Son2, Polic,Prisn
-{trv,2,2},{sh1},{sh1},{sh1},{sh1},{sh1},{sh1},{~~~},{~~~}
-{trv,1,2},{sh1},{sh1},{sh1},{sh1},{sh1},{sh1},{~~~},{SH2}
-{trv,2,2},{sh1},{sh1},{~~~},{sh1},{sh1},{sh1},{~~~},{SH2}
-{trv,2,2},{sh1},{sh1},{SH2},{sh1},{sh1},{sh1},{~~~},{~~~}
-{trv,2,2},{~~~},{sh1},{SH2},{~~~},{sh1},{sh1},{sh1},{sh1}
-{trv,1,2},{~~~},{sh1},{SH2},{SH2},{sh1},{sh1},{sh1},{sh1}
-{trv,2,2},{~~~},{~~~},{SH2},{SH2},{sh1},{sh1},{sh1},{sh1}
-{trv,1,2},{SH2},{~~~},{SH2},{SH2},{sh1},{sh1},{sh1},{sh1}
-{trv,2,2},{SH2},{sh1},{SH2},{SH2},{sh1},{sh1},{~~~},{~~~}
-{trv,1,2},{~~~},{sh1},{SH2},{SH2},{sh1},{sh1},{SH2},{SH2}
-{trv,2,2},{~~~},{~~~},{SH2},{SH2},{sh1},{sh1},{SH2},{SH2}
-{trv,1,2},{SH2},{~~~},{SH2},{SH2},{sh1},{sh1},{SH2},{SH2}
-{trv,2,2},{SH2},{~~~},{SH2},{SH2},{~~~},{sh1},{SH2},{SH2}
-{trv,2,2},{SH2},{SH2},{SH2},{SH2},{SH2},{sh1},{~~~},{~~~}
-{trv,2,2},{SH2},{SH2},{SH2},{SH2},{SH2},{~~~},{~~~},{sh1}
-{trv,1,2},{SH2},{SH2},{SH2},{SH2},{SH2},{SH2},{~~~},{sh1}
-{trv,2,2},{SH2},{SH2},{SH2},{SH2},{SH2},{SH2},{~~~},{~~~}
-*/
 
 void log(const char *s) {
     //std::cout<< "LOG: "<< s;
@@ -175,7 +179,7 @@ auto transitions(const state_t& s)
 bool river_crossing_valid(const state_t& s)
 {
 	if (s.boat.passengers > s.boat.capacity) {
-		log(" boat overload\n");
+		//log(" boat overload\n");
 		return false;
 	}
 	if (s.boat.pos == boat_t::travel) {
@@ -292,7 +296,7 @@ void solve(CostFn&& cost) { // no type checking: OK hack here, but not good for 
 			std::cout << "Solution:\n";
 			std::cout << "Boat,     Mothr,Fathr,Daug1,Daug2,Son1, Son2, Polic,Prisn\n";
 			for (auto&& state: trace)
-				std::cout << *state << '\n';
+				std::cout << *state;
 		}
 	}
 }
