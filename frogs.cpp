@@ -26,10 +26,10 @@ std::ostream& operator<<(std::ostream& os, const stones_t stones){
     return os;
 }
 
-std::ostream& operator<<(std::ostream& os, const std::vector<stones_t> stones_trace){
-    const int size = stones_trace[0].size();
+std::ostream& operator<<(std::ostream& os, const std::vector<std::shared_ptr<stones_t>> stones_trace){
+    const int size = (*stones_trace[0]).size();
     for(const auto& stones: stones_trace){
-        os << "State of "<<  size <<" stones: " << stones  << "\n";
+        os << "State of "<<  size <<" stones: " << *stones  << "\n";
     }
     return os;
 }

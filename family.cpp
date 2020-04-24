@@ -37,6 +37,79 @@ struct state_t
 	std::array<person_t,8> persons;
 };
 
+
+std::ostream& operator<<(std::ostream& os, const state_t state){
+    const int Mothr = 0;
+    const int Fathr = 1;
+    const int Daug1 = 2;
+    const int Daug2 = 3;
+    const int Son1 = 4;
+    const int Son2 = 5;
+    const int Polic = 6;
+    const int Prisn = 7;
+
+    if(state.boat.pos==1){ //boat is traveling
+        std::array<int,8> persons = std::array<int,8>();
+        os << "{trv," << state.boat.passengers << state.boat.capacity << "}";
+        for (const auto& person: state.persons) {
+            switch (person.pos){
+                case 0: os<<",{sh1}";break;
+                case 1: os<<",{~~~}";break;
+                case 2: os<<",{SH2}";break;
+            }
+        }
+    }
+    return os;
+}
+
+//TODO naive?
+bool operator==(const person_t& p1, const person_t& p2){
+    return p1.pos == p2.pos;
+}
+
+bool operator<(const person_t& p1, const person_t& p2){
+    return p1.pos< p2.pos;
+}
+
+bool operator<(const boat_t& b1, const boat_t& b2){
+    return b1.pos < b2.pos || b1.capacity < b2.capacity || b1.passengers < b2.passengers;
+}
+bool operator<(const state_t& s1, const state_t& s2){
+    return s1.persons < s2.persons || s1.boat < s2.boat;
+}
+
+bool operator!=(const boat_t& b1, const boat_t& b2){
+    return b1.pos != b2.pos || b1.capacity != b2.capacity || b1.passengers != b2.passengers;
+}
+bool operator!=(const state_t& s1, const state_t& s2){
+    return s1.persons != s2.persons || s1.boat != s2.boat;
+}
+/*
+Boat,     Mothr,Fathr,Daug1,Daug2,Son1, Son2, Polic,Prisn
+{trv,2,2},{sh1},{sh1},{sh1},{sh1},{sh1},{sh1},{~~~},{~~~}
+{trv,1,2},{sh1},{sh1},{sh1},{sh1},{sh1},{sh1},{~~~},{SH2}
+{trv,2,2},{sh1},{sh1},{~~~},{sh1},{sh1},{sh1},{~~~},{SH2}
+{trv,2,2},{sh1},{sh1},{SH2},{sh1},{sh1},{sh1},{~~~},{~~~}
+{trv,2,2},{~~~},{sh1},{SH2},{~~~},{sh1},{sh1},{sh1},{sh1}
+{trv,1,2},{~~~},{sh1},{SH2},{SH2},{sh1},{sh1},{sh1},{sh1}
+{trv,2,2},{~~~},{~~~},{SH2},{SH2},{sh1},{sh1},{sh1},{sh1}
+{trv,1,2},{SH2},{~~~},{SH2},{SH2},{sh1},{sh1},{sh1},{sh1}
+{trv,2,2},{SH2},{sh1},{SH2},{SH2},{sh1},{sh1},{~~~},{~~~}
+{trv,1,2},{~~~},{sh1},{SH2},{SH2},{sh1},{sh1},{SH2},{SH2}
+{trv,2,2},{~~~},{~~~},{SH2},{SH2},{sh1},{sh1},{SH2},{SH2}
+{trv,1,2},{SH2},{~~~},{SH2},{SH2},{sh1},{sh1},{SH2},{SH2}
+{trv,2,2},{SH2},{~~~},{SH2},{SH2},{~~~},{sh1},{SH2},{SH2}
+{trv,2,2},{SH2},{SH2},{SH2},{SH2},{SH2},{sh1},{~~~},{~~~}
+{trv,2,2},{SH2},{SH2},{SH2},{SH2},{SH2},{~~~},{~~~},{sh1}
+{trv,1,2},{SH2},{SH2},{SH2},{SH2},{SH2},{SH2},{~~~},{sh1}
+{trv,2,2},{SH2},{SH2},{SH2},{SH2},{SH2},{SH2},{~~~},{~~~}
+*/
+
+void log(const char *s) {
+    //std::cout<< "LOG: "<< s;
+}
+
+
 /** Returns a list of transitions applicable on a given state.
  * Transition is a function modifying a state */
 auto transitions(const state_t& s)
@@ -98,7 +171,6 @@ auto transitions(const state_t& s)
 	return res;
 }
 
-void log(const char string[5]);
 
 bool river_crossing_valid(const state_t& s)
 {
@@ -182,8 +254,6 @@ bool river_crossing_valid(const state_t& s)
 	return true;
 }
 
-
-
 struct cost_t {
 	size_t depth{0}; // counts the number of transitions
 	size_t noise{0}; // kids get bored on shore1 and start making noise there
@@ -228,9 +298,7 @@ void solve(CostFn&& cost) { // no type checking: OK hack here, but not good for 
 }
 
 
-void log(const char *s) {
-    std::cout<< "LOG: "<< s;
-}
+
 
 int main() {
 	std::cout << "-- Solve using depth as a cost: ---\n";

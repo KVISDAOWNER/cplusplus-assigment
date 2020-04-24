@@ -11,19 +11,29 @@
 #include <stack>
 #include <map>
 #include <set>
+#include <memory>
 
 
 enum class search_order_t{
     breadth_first, depth_first
 };
 
-template <typename StateType>
+
+template <typename StateType, typename cost_t, typename cost_fun_t = std::function<cost_t(const StateType&, const cost_t&)>>
 class state_space_t{
     public:
-        state_space_t(StateType start_state, std::function<std::vector<StateType>(StateType&)> successors, bool (*is_valid) (const StateType&) = [](const StateType&){return true;})
-        : _start_state{start_state}, _successor_fun{successors}, _is_valid{is_valid}{}
+        state_space_t() = delete; //should never be instantiated like this
+        ~state_space_t() = default; //rule of zero - class doesn't directly manage any resources
 
-        std::vector<std::vector<StateType>> check(std::function<bool(StateType)> goal_predicate, search_order_t order = search_order_t::breadth_first) {
+        state_space_t(
+                StateType start_state,
+                cost_t initial_cost,
+                std::function<std::vector<StateType>(StateType&)> successors,
+                bool (*is_valid) (const StateType&) = [](const StateType&){return true;},
+                cost_fun_t&& cost_fun = nullptr)
+                : _start_state{start_state}, _inital_cost{initial_cost}, _successor_fun{successors}, _is_valid{is_valid}, _cost_fun{cost_fun}{}
+
+        std::vector<std::vector<std::shared_ptr<StateType>>> check(std::function<bool(StateType)> goal_predicate, search_order_t order = search_order_t::breadth_first) {
             typedef search_order_t search;
             StateType (*pop)    (std::vector<StateType>&) { (order == search::breadth_first)? pop_queue : pop_stack}; //TODO ref i stedet?
 
@@ -56,14 +66,14 @@ class state_space_t{
                 }
             }
 
-            auto solutionTrace = std::vector<std::vector<StateType>>();
+            auto solutionTrace = std::vector<std::vector<std::shared_ptr<StateType>>>();
             //Make tracee
-            auto trace = std::vector<StateType>();
+            auto trace = std::vector<std::shared_ptr<StateType>>(); //TODO unique ptrs i stedet i denne funktion? share_ptr forid vi copier nogle gange, kan det undgåes?
             for (auto& state: goal_states) {
-                trace.push_back(state);
+                trace.push_back(std::make_shared<StateType>(state));
                 while(state != _start_state){
                     state = parent_map.find(state)->second[0]; //Here we guarantee that state is a key //TODO branch out when multiple parents
-                    trace.push_back(state);
+                    trace.push_back(std::make_shared<StateType>(state));
                 }
                 std::reverse(std::begin(trace), std::end(trace));
                 solutionTrace.push_back(trace);
@@ -74,9 +84,12 @@ class state_space_t{
 
 
 private:
-        StateType                                           _start_state;
-        std::function<std::vector<StateType>(StateType&)>   _successor_fun;
-        bool                                                (*_is_valid) (const StateType&);
+        StateType                                               _start_state;
+        cost_t                                                  _inital_cost;
+        std::function<std::vector<StateType>(StateType&)>       _successor_fun;
+        std::function<cost_t (const StateType&, const cost_t&)> _cost_fun;
+        bool                                                    (*_is_valid) (const StateType&);
+
         static StateType pop_stack(std::vector<StateType>& s) { StateType v = s.back(); s.pop_back(); return v; } //TODO optimize? if(data.back()>-1) then back(); og ikke static?
         static StateType pop_queue(std::vector<StateType>& q) { StateType v = q.front(); q.erase( q.begin() ); return v; } //TODO optimize? og ikke static?
         //TODO fill out

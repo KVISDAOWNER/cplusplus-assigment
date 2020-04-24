@@ -26,10 +26,10 @@ std::ostream& operator<<(std::ostream& os, const actors_t actors){
     return os;
 }
 
-std::ostream& operator<<(std::ostream& os, const std::vector<actors_t> actors_trace){
+std::ostream& operator<<(std::ostream& os, const std::vector<std::shared_ptr<actors_t>> actors_trace){
     int round = 0;
     for(const auto& actors: actors_trace){
-        os << round << ": " << actors << "\n";
+        os << round << ": " << *actors << "\n";
         round++;
     }
     return os;
