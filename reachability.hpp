@@ -58,7 +58,8 @@ class state_space_t{
                 StateType start_state,
                 std::function<std::vector<StateType>(StateType&)> successors, //TODO better default?
                 bool (*is_valid) (const StateType&) = [](const StateType&){return true;})
-                : _start_state{start_state}, _inital_cost{default_init_cost{}}, _successor_fun{successors}, _is_valid{is_valid}{
+                : _start_state{start_state}, _inital_cost{default_init_cost{}}, _successor_fun{successors}, _is_valid{is_valid}, _cost_fun(){
+            _cost_fun = [](const StateType&, const cost_t&){return cost_t{};};
         }
 
         state_space_t(
@@ -93,7 +94,7 @@ class state_space_t{
                 for(const auto& n_state: _successor_fun(state.state)){
                     if(!seen.count(n_state) && _is_valid(n_state)) { //if not seen before?
                         seen.insert(n_state);
-                        auto n_node = node(n_state, (_cost_fun != nullptr)?_cost_fun(state.state, state.cost): default_init_cost()); //TODO do the null check smarter or give default func smart way?
+                        auto n_node = node(n_state, _cost_fun(state.state, state.cost)); //TODO do the null check smarter or give default func smart way?
                         push(waiting, n_node, cmp_c);
                         parent_map[n_node].push_back(state);
                     //if(!parent_map.count(state)) //check to not do duplicate parents
@@ -122,7 +123,7 @@ class state_space_t{
         }
 
 
-private:
+    private:
         StateType                                               _start_state;
         cost_t                                                  _inital_cost;
         std::function<std::vector<StateType>(StateType&)>       _successor_fun;
