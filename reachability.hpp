@@ -58,7 +58,7 @@ class state_space_t{
                 StateType start_state,
                 std::function<std::vector<StateType>(StateType&)> successors, //TODO better default?
                 bool (*is_valid) (const StateType&) = [](const StateType&){return true;})
-                : _start_state{start_state}, _inital_cost{default_init_cost{}}, _successor_fun{successors}, _is_valid{is_valid}, _cost_fun(){
+                : _start_state{start_state}, _initial_cost{default_init_cost{}}, _successor_fun{successors}, _is_valid{is_valid}, _cost_fun(){
             _cost_fun = [](const StateType&, const cost_t&){return cost_t{};};
         }
 
@@ -68,7 +68,7 @@ class state_space_t{
                 std::function<std::vector<StateType>(StateType&)> successors = nullptr, //TODO better default?
                 bool (*is_valid) (const StateType&) = [](const StateType&){return true;},
                 cost_fun_t&& cost_fun = [](const cost_t& prev_cost){return cost_t{prev_cost.depth+1, prev_cost.noise};})
-                : _start_state{start_state}, _inital_cost{initial_cost}, _successor_fun{successors}, _is_valid{is_valid}, _cost_fun{cost_fun}{}
+                : _start_state{start_state}, _initial_cost{initial_cost}, _successor_fun{successors}, _is_valid{is_valid}, _cost_fun{cost_fun}{}
 
         std::vector<std::vector<std::shared_ptr<StateType>>> check(std::function<bool(StateType)> goal_predicate, search_order_t order = search_order_t::breadth_first) {
             typedef search_order_t search;
@@ -78,11 +78,9 @@ class state_space_t{
             std::set<StateType> seen = std::set<StateType>();
             auto goal_states = std::vector<node<StateType, cost_t>>();
             auto goal_state_found = false;
-
-
             auto waiting = std::vector<node<StateType, cost_t>>();
             if(_is_valid(_start_state))
-                push(waiting, node(_start_state, _inital_cost), cmp_c);
+                push(waiting, node(_start_state, _initial_cost), cmp_c);
 
             while(!waiting.empty() && !goal_state_found){
                 auto state = pop(waiting);
@@ -125,7 +123,7 @@ class state_space_t{
 
     private:
         StateType                                               _start_state;
-        cost_t                                                  _inital_cost;
+        cost_t                                                  _initial_cost;
         std::function<std::vector<StateType>(StateType&)>       _successor_fun;
         std::function<cost_t (const StateType&, const cost_t&)> _cost_fun;
         bool                                                    (*_is_valid) (const StateType&);
