@@ -200,6 +200,12 @@ PuzzleEngine_BINARY_DIR:STATIC=/home/kris271c/Desktop/assignment/cmake-build-deb
 //Value Computed by CMake
 PuzzleEngine_SOURCE_DIR:STATIC=/home/kris271c/Desktop/assignment
 
+//The directory containing a CMake configuration file for benchmark.
+benchmark_DIR:PATH=/usr/lib/cmake/benchmark
+
+//The directory containing a CMake configuration file for frog_bm.
+frog_bm_DIR:PATH=frog_bm_DIR-NOTFOUND
+
 
 ########################
 # INTERNAL cache entries

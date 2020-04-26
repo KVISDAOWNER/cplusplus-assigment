@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named benchmark
+
+# Build rule for target.
+benchmark: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 benchmark
+.PHONY : benchmark
+
+# fast build rule for target.
+benchmark/fast:
+	$(MAKE) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/build
+.PHONY : benchmark/fast
+
+#=============================================================================
 # Target rules for targets named crossing
 
 # Build rule for target.
@@ -176,6 +189,33 @@ crossing.cpp.s:
 	$(MAKE) -f CMakeFiles/crossing.dir/build.make CMakeFiles/crossing.dir/crossing.cpp.s
 .PHONY : crossing.cpp.s
 
+crossing_bm.o: crossing_bm.cpp.o
+
+.PHONY : crossing_bm.o
+
+# target to build an object file
+crossing_bm.cpp.o:
+	$(MAKE) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/crossing_bm.cpp.o
+.PHONY : crossing_bm.cpp.o
+
+crossing_bm.i: crossing_bm.cpp.i
+
+.PHONY : crossing_bm.i
+
+# target to preprocess a source file
+crossing_bm.cpp.i:
+	$(MAKE) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/crossing_bm.cpp.i
+.PHONY : crossing_bm.cpp.i
+
+crossing_bm.s: crossing_bm.cpp.s
+
+.PHONY : crossing_bm.s
+
+# target to generate assembly for a file
+crossing_bm.cpp.s:
+	$(MAKE) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/crossing_bm.cpp.s
+.PHONY : crossing_bm.cpp.s
+
 family.o: family.cpp.o
 
 .PHONY : family.o
@@ -202,6 +242,33 @@ family.s: family.cpp.s
 family.cpp.s:
 	$(MAKE) -f CMakeFiles/family.dir/build.make CMakeFiles/family.dir/family.cpp.s
 .PHONY : family.cpp.s
+
+family_bm.o: family_bm.cpp.o
+
+.PHONY : family_bm.o
+
+# target to build an object file
+family_bm.cpp.o:
+	$(MAKE) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/family_bm.cpp.o
+.PHONY : family_bm.cpp.o
+
+family_bm.i: family_bm.cpp.i
+
+.PHONY : family_bm.i
+
+# target to preprocess a source file
+family_bm.cpp.i:
+	$(MAKE) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/family_bm.cpp.i
+.PHONY : family_bm.cpp.i
+
+family_bm.s: family_bm.cpp.s
+
+.PHONY : family_bm.s
+
+# target to generate assembly for a file
+family_bm.cpp.s:
+	$(MAKE) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/family_bm.cpp.s
+.PHONY : family_bm.cpp.s
 
 frogs.o: frogs.cpp.o
 
@@ -230,12 +297,40 @@ frogs.cpp.s:
 	$(MAKE) -f CMakeFiles/frogs.dir/build.make CMakeFiles/frogs.dir/frogs.cpp.s
 .PHONY : frogs.cpp.s
 
+frogs_bm.o: frogs_bm.cpp.o
+
+.PHONY : frogs_bm.o
+
+# target to build an object file
+frogs_bm.cpp.o:
+	$(MAKE) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/frogs_bm.cpp.o
+.PHONY : frogs_bm.cpp.o
+
+frogs_bm.i: frogs_bm.cpp.i
+
+.PHONY : frogs_bm.i
+
+# target to preprocess a source file
+frogs_bm.cpp.i:
+	$(MAKE) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/frogs_bm.cpp.i
+.PHONY : frogs_bm.cpp.i
+
+frogs_bm.s: frogs_bm.cpp.s
+
+.PHONY : frogs_bm.s
+
+# target to generate assembly for a file
+frogs_bm.cpp.s:
+	$(MAKE) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/frogs_bm.cpp.s
+.PHONY : frogs_bm.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... benchmark"
 	@echo "... crossing"
 	@echo "... rebuild_cache"
 	@echo "... frogs"
@@ -244,12 +339,21 @@ help:
 	@echo "... crossing.o"
 	@echo "... crossing.i"
 	@echo "... crossing.s"
+	@echo "... crossing_bm.o"
+	@echo "... crossing_bm.i"
+	@echo "... crossing_bm.s"
 	@echo "... family.o"
 	@echo "... family.i"
 	@echo "... family.s"
+	@echo "... family_bm.o"
+	@echo "... family_bm.i"
+	@echo "... family_bm.s"
 	@echo "... frogs.o"
 	@echo "... frogs.i"
 	@echo "... frogs.s"
+	@echo "... frogs_bm.o"
+	@echo "... frogs_bm.i"
+	@echo "... frogs_bm.s"
 .PHONY : help
 
 

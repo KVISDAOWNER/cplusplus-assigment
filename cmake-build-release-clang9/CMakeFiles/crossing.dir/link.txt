@@ -1,0 +1,1 @@
+/usr/bin/clang++-9  -O3 -DNDEBUG   CMakeFiles/crossing.dir/crossing.cpp.o  -o crossing 

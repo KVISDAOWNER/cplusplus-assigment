@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kris271c/Desktop/assignment/family.cpp
+reachability.hpp
+/home/kris271c/Desktop/assignment/reachability.hpp
+iostream
+-
+deque
+-
+array
+-
+functional
+-
+
+/home/kris271c/Desktop/assignment/reachability.hpp
+functional
+-
+queue
+-
+iostream
+-
+stack
+-
+map
+-
+set
+-
+memory
+-
+

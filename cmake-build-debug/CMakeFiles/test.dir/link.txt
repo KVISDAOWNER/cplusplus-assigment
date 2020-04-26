@@ -1,0 +1,1 @@
+/usr/bin/c++  -g -fsanitize=undefined -fsanitize=address   CMakeFiles/test.dir/benchmark.cpp.o  -o test /usr/lib/x86_64-linux-gnu/libbenchmark.so.1.4.1 -lpthread /usr/lib/x86_64-linux-gnu/librt.so 

@@ -11,3 +11,7 @@ set(CMAKE_LINK_FLAGS_DEBUG "${CMAKE_LINK_FLAGS_DEBUG} -fsanitize=undefined -fsan
 add_executable(frogs frogs.cpp)
 add_executable(family family.cpp)
 add_executable(crossing crossing.cpp )
+add_executable(benchmark frogs_bm.cpp crossing_bm.cpp family_bm.cpp)
+
+find_package(benchmark REQUIRED)
+target_link_libraries(benchmark benchmark::benchmark)

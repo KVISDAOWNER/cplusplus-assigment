@@ -1,0 +1,4 @@
+/opt/clion-2019.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/bin/gcc-9 -DCMAKE_CXX_COMPILER=/usr/bin/g++-9 -G "CodeBlocks - Unix Makefiles" /home/kris271c/Desktop/assignment
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/kris271c/Desktop/assignment/cmake-build-release-gcc9

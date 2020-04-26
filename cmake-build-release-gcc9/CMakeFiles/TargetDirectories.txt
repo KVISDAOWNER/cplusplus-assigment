@@ -1,0 +1,6 @@
+/home/kris271c/Desktop/assignment/cmake-build-release-gcc9/CMakeFiles/benchmark.dir
+/home/kris271c/Desktop/assignment/cmake-build-release-gcc9/CMakeFiles/crossing.dir
+/home/kris271c/Desktop/assignment/cmake-build-release-gcc9/CMakeFiles/rebuild_cache.dir
+/home/kris271c/Desktop/assignment/cmake-build-release-gcc9/CMakeFiles/frogs.dir
+/home/kris271c/Desktop/assignment/cmake-build-release-gcc9/CMakeFiles/edit_cache.dir
+/home/kris271c/Desktop/assignment/cmake-build-release-gcc9/CMakeFiles/family.dir

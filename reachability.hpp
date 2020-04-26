@@ -58,13 +58,12 @@ class state_space_t{
                 StateType start_state,
                 std::function<std::vector<StateType>(StateType&)> successors, //TODO better default?
                 bool (*is_valid) (const StateType&) = [](const StateType&){return true;})
-                : _start_state{start_state}, _initial_cost{default_init_cost{}}, _successor_fun{successors}, _is_valid{is_valid}, _cost_fun(){
-            _cost_fun = [](const StateType&, const cost_t&){return cost_t{};};
-        }
+                : _start_state{start_state}, _initial_cost{default_init_cost{}}, _successor_fun{successors}, _is_valid{is_valid}, _cost_fun()
+                {   _cost_fun = [](const StateType&, const cost_t&){return cost_t{};};    }
 
         state_space_t(
                 StateType start_state,
-                cost_t initial_cost = default_init_cost{},
+                cost_t initial_cost,
                 std::function<std::vector<StateType>(StateType&)> successors = nullptr, //TODO better default?
                 bool (*is_valid) (const StateType&) = [](const StateType&){return true;},
                 cost_fun_t&& cost_fun = [](const cost_t& prev_cost){return cost_t{prev_cost.depth+1, prev_cost.noise};})
@@ -110,7 +109,7 @@ class state_space_t{
             for (auto& node: goal_states) {
                 trace.push_back(std::make_shared<StateType>(node.state));
                 while(node.state != _start_state){
-                    node = parent_map.find(node)->second[0]; //Here we guarantee that state is a key //TODO branch out when multiple parents
+                    node = parent_map.find(node)->second[0]; //Here we guarantee that state is a key //TODO branch out when multiple parents?
                     trace.push_back(std::make_shared<StateType>(node.state));
                 }
                 std::reverse(std::begin(trace), std::end(trace));
