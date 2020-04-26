@@ -1,9 +1,7 @@
-//
-// Created by kris271c on 15/04/2020.
-//
-
 #ifndef ASSIGNMENT_REACHABILITY_HPP
 #define ASSIGNMENT_REACHABILITY_HPP
+
+#define GET_VARIABLE_NAME(Variable) (#Variable)
 
 #include <functional>
 #include <queue>
@@ -13,80 +11,85 @@
 #include <set>
 #include <memory>
 
+
 enum class search_order_t{
     breadth_first, depth_first
 };
 
-//https://stackoverflow.com/questions/15843525/how-do-you-insert-the-value-in-a-sorted-vector
-template< typename T, typename Func_T >
-typename std::vector<T>::iterator
-push( std::vector<T> & vec, T const& item, Func_T cmp)
-{
-    return vec.insert
-            (
-                    std::upper_bound( vec.begin(), vec.end(), item, cmp ),
-                    item
-            );
-}
 
-struct default_init_cost{
-    size_t depth{0}; // counts the number of transitions
-    size_t noise{0}; // kids get bored on shore1 and start making noise there
-    bool operator<(const default_init_cost& other) const {
+struct default_cost{
+    size_t depth{0};
+    bool operator<(const default_cost& other) const {
         if (depth < other.depth)
             return true;
         if (other.depth < depth)
             return false;
-        return noise < other.noise;
+        return false; // == case
     }
 };
 
-template <typename StateType, typename cost_t>
+template <typename TState, typename TCost>
 struct node{
-    node(StateType s, cost_t c): state{s}, cost{c}{}
-    StateType state;
-    cost_t cost;
+    node() = delete; //should never be instantiated like this
+    ~node() = default; //rule of zero - struct doesn't directly manage any resources
+    node(TState s, TCost c): state{s}, cost{c}{}
+    TState state;
+    TCost cost;
 };
 
-template <typename StateType, typename cost_t = default_init_cost, typename cost_fun_t = std::function<cost_t(const StateType&, const cost_t&)>>
+//TODO https://stackoverflow.com/questions/40934997/stdmove-or-stdforward-when-assigning-universal-constructor-to-member-variabl
+// https://stackoverflow.com/questions/17316386/pass-by-value-or-universal-reference
+template <typename TState, typename TCost = default_cost, typename TCost_Fun = std::function<TCost(const TState&, const TCost&)>>
 class state_space_t{
+    typedef std::function<std::vector<TState>(TState&)> succ_fun;
     public:
         state_space_t() = delete; //should never be instantiated like this
         ~state_space_t() = default; //rule of zero - class doesn't directly manage any resources
 
         state_space_t(
-                StateType start_state,
-                std::function<std::vector<StateType>(StateType&)> successors, //TODO better default?
-                bool (*is_valid) (const StateType&) = [](const StateType&){return true;})
-                : _start_state{start_state}, _initial_cost{default_init_cost{}}, _successor_fun{successors}, _is_valid{is_valid}, _cost_fun()
-                {   _cost_fun = [](const StateType&, const cost_t&){return cost_t{};};    }
+                TState      start_state,
+                succ_fun    successors, //TODO better default? std::vector ok here?
+                bool        (*is_valid) (const TState&) = [](const TState&){return true;}) //frogs needs default
+                : state_space_t(        //constructor chaining to avoid duplicate null argument type check
+                        start_state,
+                        default_cost{},
+                        successors,
+                        is_valid,
+                        [](const TState&, const TCost&){return TCost{};}){} //default cost fun
 
         state_space_t(
-                StateType start_state,
-                cost_t initial_cost,
-                std::function<std::vector<StateType>(StateType&)> successors = nullptr, //TODO better default?
-                bool (*is_valid) (const StateType&) = [](const StateType&){return true;},
-                cost_fun_t&& cost_fun = [](const cost_t& prev_cost){return cost_t{prev_cost.depth+1, prev_cost.noise};})
-                : _start_state{start_state}, _initial_cost{initial_cost}, _successor_fun{successors}, _is_valid{is_valid}, _cost_fun{cost_fun}{}
+                TState      start_state,
+                TCost       initial_cost,
+                succ_fun    successors,
+                bool        (*is_valid) (const TState&),
+                TCost_Fun   cost_fun )
+                : _start_state{start_state}, _initial_cost{initial_cost}, _successor_fun{successors}, _is_valid{is_valid}, _cost_fun{cost_fun}
+                {
 
-        std::vector<std::vector<std::shared_ptr<StateType>>> check(std::function<bool(StateType)> goal_predicate, search_order_t order = search_order_t::breadth_first) {
+
+                    if(is_valid == nullptr)         throw argument_null_exception(__func__, GET_VARIABLE_NAME(is_valid));
+                    else if(cost_fun == nullptr)    throw argument_null_exception(__func__, GET_VARIABLE_NAME(cost_fun));
+                }
+
+        std::vector<std::vector<std::shared_ptr<TState>>> check(std::function<bool(TState)> goal_predicate, search_order_t order = search_order_t::breadth_first){
+            if(goal_predicate == nullptr)         throw argument_null_exception(__func__, GET_VARIABLE_NAME(goal_predicate));
+
             typedef search_order_t search;
-            node<StateType, cost_t> (*pop)    (std::vector<node<StateType, cost_t>>&) { (order == search::breadth_first)? pop_queue : pop_stack}; //TODO ref i stedet?
+            node<TState, TCost> (*pop)    (std::vector<node<TState, TCost>>&) {(order == search::breadth_first) ? pop_queue : pop_stack}; //TODO ref i stedet?
 
-            std::map<node<StateType, cost_t>,std::vector<node<StateType, cost_t>>, decltype(cmp_s)> parent_map(cmp_s); //for trace and check if visited
-            std::set<StateType> seen = std::set<StateType>();
-            auto goal_states = std::vector<node<StateType, cost_t>>();
-            auto goal_state_found = false;
-            auto waiting = std::vector<node<StateType, cost_t>>();
+            auto parent_map = std::map<node<TState, TCost>,std::vector<node<TState, TCost>>, decltype(cmp_s)>(cmp_s); //for trace and check if visited
+            auto seen = std::set<TState>();
+            auto goal_states = std::vector<node<TState, TCost>>();
+            auto waiting = std::vector<node<TState, TCost>>();
             if(_is_valid(_start_state))
                 push(waiting, node(_start_state, _initial_cost), cmp_c);
 
-            while(!waiting.empty() && !goal_state_found){
+            while(!waiting.empty()){
                 auto state = pop(waiting);
                 int size = waiting.size();
                 if(goal_predicate(state.state)){
-                    goal_state_found = true;
                     goal_states.push_back(state);
+                    break; //We only want the first solution
                 }
                 for(const auto& n_state: _successor_fun(state.state)){
                     if(!seen.count(n_state) && _is_valid(n_state)) { //if not seen before?
@@ -103,14 +106,14 @@ class state_space_t{
                 //}
             }
 
-            //Make tracee
-            auto solutionTrace = std::vector<std::vector<std::shared_ptr<StateType>>>();
-            auto trace = std::vector<std::shared_ptr<StateType>>(); //TODO unique ptrs i stedet i denne funktion? share_ptr forid vi copier nogle gange, kan det undgåes?
+            //-------Make trace-------
+            auto solutionTrace = std::vector<std::vector<std::shared_ptr<TState>>>();
+            auto trace = std::vector<std::shared_ptr<TState>>(); //TODO unique ptrs i stedet i denne funktion? share_ptr forid vi copier nogle gange, kan det undgåes?
             for (auto& node: goal_states) {
-                trace.push_back(std::make_shared<StateType>(node.state));
+                trace.push_back(std::make_shared<TState>(node.state));
                 while(node.state != _start_state){
                     node = parent_map.find(node)->second[0]; //Here we guarantee that state is a key //TODO branch out when multiple parents?
-                    trace.push_back(std::make_shared<StateType>(node.state));
+                    trace.push_back(std::make_shared<TState>(node.state));
                 }
                 std::reverse(std::begin(trace), std::end(trace));
                 solutionTrace.push_back(trace);
@@ -121,17 +124,32 @@ class state_space_t{
 
 
     private:
-        StateType                                               _start_state;
-        cost_t                                                  _initial_cost;
-        std::function<std::vector<StateType>(StateType&)>       _successor_fun;
-        std::function<cost_t (const StateType&, const cost_t&)> _cost_fun;
-        bool                                                    (*_is_valid) (const StateType&);
-        std::function<bool (const node<StateType, cost_t>& a, const node<StateType, cost_t>& b)> cmp_c = [](const node<StateType, cost_t>& a, const node<StateType, cost_t>& b) { return  a.cost < b.cost; };
-        std::function<bool (const node<StateType, cost_t>& a, const node<StateType, cost_t>& b)> cmp_s = [](const node<StateType, cost_t>& a, const node<StateType, cost_t>& b) { return  a.state < b.state; };
+        typedef  std::function<bool (const node<TState, TCost>& a, const node<TState, TCost>& b)> cmp_node_func;
 
-        static node<StateType, cost_t> pop_stack(std::vector<node<StateType, cost_t>>& s) { node<StateType, cost_t> v = s.back(); s.pop_back(); return v; } //TODO optimize? if(data.back()>-1) then back(); og ikke static?
-        static node<StateType, cost_t> pop_queue(std::vector<node<StateType, cost_t>>& q) { node<StateType, cost_t> v = q.front(); q.erase( q.begin() ); return v; } //TODO optimize? og ikke static?
-        //TODO fill out
+        TState                                                      _start_state;
+        TCost                                                       _initial_cost;
+        std::function<std::vector<TState>(TState&)>                 _successor_fun;
+        std::function<TCost (const TState&, const TCost&)>          _cost_fun;
+        bool                                                        (*_is_valid) (const TState&);
+        cmp_node_func                                               cmp_c =
+                [](const node<TState, TCost>& a, const node<TState, TCost>& b) { return a.cost < b.cost; };
+        cmp_node_func                                               cmp_s =
+                [](const node<TState, TCost>& a, const node<TState, TCost>& b) { return a.state < b.state; };
+
+        std::invalid_argument argument_null_exception (const std::string& func, const std::string& var)
+            {return std::invalid_argument(std::string("In call to function: ") + func + std::string(". Invalid argument: ") +  var + " is nullptr.");}
+            
+        static node<TState, TCost> pop_stack(std::vector<node<TState, TCost>>& s) { node<TState, TCost> v = s.back(); s.pop_back(); return v; } //TODO optimize? if(data.back()>-1) then back(); og ikke static?
+        static node<TState, TCost> pop_queue(std::vector<node<TState, TCost>>& q) { node<TState, TCost> v = q.front(); q.erase(q.begin() ); return v; } //TODO optimize? og ikke static?
+
+        //https://stackoverflow.com/questions/15843525/how-do-you-insert-the-value-in-a-sorted-vector
+        template<typename TFunc, typename C >
+        typename C::iterator
+        push(C& con, node<TState, TCost> const& item, TFunc cmp)
+        {   return con.insert(
+                            std::upper_bound( con.begin(), con.end(), item, cmp ),
+                            item);
+        }
 };
 
 
@@ -152,14 +170,14 @@ struct is_container<C,
 template<typename Container>
 constexpr auto is_container_v = is_container<Container>::value;
 
-template<typename StateType, typename Container>
-typename std::enable_if<is_container_v<Container>, std::function<std::vector<StateType>(StateType&)>>::type
-successors(Container transitions (const StateType&)) {
-    return [transitions](const StateType& startState){ //TODO hvorfor kan den ikke tage &transitions?
-        auto states = std::vector<StateType>(); //results
+template<typename TState, typename Container>
+typename std::enable_if<is_container_v<Container>, std::function<std::vector<TState>(TState&)>>::type
+successors(Container transitions (const TState&)) {
+    return [transitions](const TState& startState){ //TODO hvorfor kan den ikke tage &transitions?
+        auto states = std::vector<TState>(); //results
         auto functions = transitions(startState);
         for (const auto& transition: functions) {
-            StateType stateCpy = startState;
+            TState stateCpy = startState;
             transition(stateCpy);
             states.push_back(stateCpy);
         }

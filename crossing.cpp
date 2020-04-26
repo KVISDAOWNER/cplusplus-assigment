@@ -19,7 +19,7 @@ std::ostream& operator<<(std::ostream& os, const actors_t actors){
     for(const auto& actor: actors){ //TODO test om virker og overvej auto&&?
         switch (actor){
             case pos_t::shore1: os<<"1";break;
-            case pos_t::travel: os<<"-";break;
+            case pos_t::travel: os<<"~";break;
             case pos_t::shore2: os<<"2";break;
         }
     }
