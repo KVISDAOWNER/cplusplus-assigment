@@ -138,7 +138,8 @@ class state_space_t{
 
         std::invalid_argument argument_null_exception (const std::string& func, const std::string& var)
             {return std::invalid_argument(std::string("In call to function: ") + func + std::string(". Invalid argument: ") +  var + " is nullptr.");}
-            
+
+        //TODO lav generic?
         static node<TState, TCost> pop_stack(std::vector<node<TState, TCost>>& s) { node<TState, TCost> v = s.back(); s.pop_back(); return v; } //TODO optimize? if(data.back()>-1) then back(); og ikke static?
         static node<TState, TCost> pop_queue(std::vector<node<TState, TCost>>& q) { node<TState, TCost> v = q.front(); q.erase(q.begin() ); return v; } //TODO optimize? og ikke static?
 
