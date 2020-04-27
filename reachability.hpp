@@ -37,6 +37,38 @@ struct node{
     TCost cost;
 };
 
+
+
+template <typename T, typename = void> //Not Container //TODO Why void here?
+struct is_container: std::false_type {};
+
+template <typename C>
+struct is_container<C,
+    std::void_t<
+        typename C::iterator,
+        typename C::const_iterator,
+        decltype(std::begin(std::declval<C&>())),
+        decltype(std::end(std::declval<C&>()))
+    >
+>: std::true_type {};
+
+template<typename Container>
+constexpr auto is_container_v = is_container<Container>::value;
+
+
+template <typename T, typename  = void> //Not comparable
+struct is_equality_comparable : std::false_type {};
+
+//https://stackoverflow.com/questions/16399346/c11-static-assert-for-equality-comparable-type
+template <typename T>
+struct is_equality_comparable<T,
+        typename std::enable_if<
+                true,
+                decltype(std::declval<T&>() == std::declval<decltype(nullptr)>(), (void)0)
+        >::type
+>: std::true_type{};
+
+
 //TODO https://stackoverflow.com/questions/40934997/stdmove-or-stdforward-when-assigning-universal-constructor-to-member-variabl
 // https://stackoverflow.com/questions/17316386/pass-by-value-or-universal-reference
 template <typename TState, typename TCost = default_cost, typename TCost_Fun = std::function<TCost(const TState&, const TCost&)>>
@@ -66,17 +98,21 @@ class state_space_t{
                 : _start_state{start_state}, _initial_cost{initial_cost}, _successor_fun{successors}, _is_valid{is_valid}, _cost_fun{cost_fun}
                 {
 
+                    //static_assert(std::is_function<TCost_Fun>::value, "cost function type must be invocable");
+                    //static_assert(!std::is_same<decltype(cost_fun), decltype(nullptr)>::value, "Constructor cannot be called with nullptr arguments."); //if it is null pointer constant type.
+                    static_assert(is_equality_comparable<TCost_Fun>::value, "cost function type must be equality \"==\" comparable to nullptr");
+                    //static_assert(is_equality_comparable<decltype(is_valid)>::value, "is valid function type must be equality \"==\" comparable to nullptr");
 
-                    if(is_valid == nullptr)         throw argument_null_exception(__func__, GET_VARIABLE_NAME(is_valid));
-                    else if(cost_fun == nullptr)    throw argument_null_exception(__func__, GET_VARIABLE_NAME(cost_fun));
+                    //if(is_valid == nullptr)         throw argument_null_exception(__func__, GET_VARIABLE_NAME(is_valid));
+                    if(cost_fun == nullptr)    throw std::invalid_argument(nullptr_err_msg(__func__, GET_VARIABLE_NAME(cost_fun)));
                 }
 
         std::vector<std::vector<std::shared_ptr<TState>>> check(std::function<bool(TState)> goal_predicate, search_order_t order = search_order_t::breadth_first){
-            if(goal_predicate == nullptr)         throw argument_null_exception(__func__, GET_VARIABLE_NAME(goal_predicate));
-
             typedef search_order_t search;
-            node<TState, TCost> (*pop)    (std::vector<node<TState, TCost>>&) {(order == search::breadth_first) ? pop_queue : pop_stack}; //TODO ref i stedet?
 
+            if(goal_predicate == nullptr)         throw std::invalid_argument(nullptr_err_msg(__func__, GET_VARIABLE_NAME(goal_predicate)));
+
+            node<TState, TCost> (*pop)    (std::vector<node<TState, TCost>>&) {(order == search::breadth_first) ? pop_queue : pop_stack}; //TODO ref i stedet?
             auto parent_map = std::map<node<TState, TCost>,std::vector<node<TState, TCost>>, decltype(cmp_s)>(cmp_s); //for trace and check if visited
             auto seen = std::set<TState>();
             auto goal_states = std::vector<node<TState, TCost>>();
@@ -94,7 +130,7 @@ class state_space_t{
                 for(const auto& n_state: _successor_fun(state.state)){
                     if(!seen.count(n_state) && _is_valid(n_state)) { //if not seen before?
                         seen.insert(n_state);
-                        auto n_node = node(n_state, _cost_fun(state.state, state.cost)); //TODO do the null check smarter or give default func smart way?
+                        auto n_node = node(n_state, _cost_fun(n_state, state.cost)); //TODO do the null check smarter or give default func smart way?
                         push(waiting, n_node, cmp_c);
                         parent_map[n_node].push_back(state);
                     //if(!parent_map.count(state)) //check to not do duplicate parents
@@ -124,52 +160,44 @@ class state_space_t{
 
 
     private:
-        typedef  std::function<bool (const node<TState, TCost>& a, const node<TState, TCost>& b)> cmp_node_func;
+        typedef  std::function<bool (const node<TState, TCost>& a, const node<TState, TCost>& b)>   cmp_node_func;
 
-        TState                                                      _start_state;
-        TCost                                                       _initial_cost;
-        std::function<std::vector<TState>(TState&)>                 _successor_fun;
-        std::function<TCost (const TState&, const TCost&)>          _cost_fun;
-        bool                                                        (*_is_valid) (const TState&);
-        cmp_node_func                                               cmp_c =
-                [](const node<TState, TCost>& a, const node<TState, TCost>& b) { return a.cost < b.cost; };
-        cmp_node_func                                               cmp_s =
-                [](const node<TState, TCost>& a, const node<TState, TCost>& b) { return a.state < b.state; };
+        TState          _start_state;
+        TCost           _initial_cost;
+        succ_fun        _successor_fun;
+        TCost_Fun       _cost_fun;
+        bool            (*_is_valid) (const TState&);
+        cmp_node_func   cmp_c =
+                            [](const node<TState, TCost>& a, const node<TState, TCost>& b) { return a.cost < b.cost; };
+        cmp_node_func   cmp_s =
+                            [](const node<TState, TCost>& a, const node<TState, TCost>& b) { return a.state < b.state;};
 
-        std::invalid_argument argument_null_exception (const std::string& func, const std::string& var)
-            {return std::invalid_argument(std::string("In call to function: ") + func + std::string(". Invalid argument: ") +  var + " is nullptr.");}
+        std::string nullptr_err_msg (const std::string& func, const std::string& var)
+            {return std::string("In call to function: ") + func + std::string(". Invalid argument: ") +  var + " is nullptr.";}
 
         //TODO lav generic?
-        static node<TState, TCost> pop_stack(std::vector<node<TState, TCost>>& s) { node<TState, TCost> v = s.back(); s.pop_back(); return v; } //TODO optimize? if(data.back()>-1) then back(); og ikke static?
-        static node<TState, TCost> pop_queue(std::vector<node<TState, TCost>>& q) { node<TState, TCost> v = q.front(); q.erase(q.begin() ); return v; } //TODO optimize? og ikke static?
+        static node<TState, TCost> pop_stack(std::vector<node<TState, TCost>>& s){
+            node<TState, TCost> v = s.back(); //TODO std::move her?
+            s.pop_back();
+            return v;
+        } //TODO optimize? if(data.back()>-1) then back(); og ikke static?
+
+        static node<TState, TCost> pop_queue(std::vector<node<TState, TCost>>& q) {
+            node<TState, TCost> v = q.front();  //TODO std::move her?
+            q.erase(q.begin() );
+            return v;
+        } //TODO optimize? og ikke static?
 
         //https://stackoverflow.com/questions/15843525/how-do-you-insert-the-value-in-a-sorted-vector
         template<typename TFunc, typename C >
-        typename C::iterator
-        push(C& con, node<TState, TCost> const& item, TFunc cmp)
-        {   return con.insert(
-                            std::upper_bound( con.begin(), con.end(), item, cmp ),
-                            item);
+        typename std::enable_if<is_container_v<C>, void>::type
+        push(C& c, node<TState, TCost> const& item, TFunc cmp)
+        {
+            c.insert(
+                std::upper_bound( c.begin(), c.end(), item, cmp ),
+                item);
         }
 };
-
-
-
-template <typename T, typename = void> //Not Container //TODO Why void here?
-struct is_container: std::false_type {};
-
-template <typename C>
-struct is_container<C,
-        std::void_t<
-                typename C::iterator,
-                typename C::const_iterator,
-                decltype(std::begin(std::declval<C&>())),
-                decltype(std::end(std::declval<C&>()))
-        >
->: std::true_type {};
-
-template<typename Container>
-constexpr auto is_container_v = is_container<Container>::value;
 
 template<typename TState, typename Container>
 typename std::enable_if<is_container_v<Container>, std::function<std::vector<TState>(TState&)>>::type
