@@ -136,7 +136,7 @@ void solve(size_t frogs, search_order_t order = search_order_t::breadth_first)
     }
 }
 
-int main1()
+int main()
 {
     explain();
     std::cout << "--- Solve with depth-first search: ---\n";

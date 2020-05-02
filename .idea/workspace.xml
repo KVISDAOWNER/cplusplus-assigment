@@ -20,26 +20,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1a50008f-f0b3-490e-8d7d-4934db972b6c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/Progress/1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/Progress/2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/Progress/count.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/family.dir/family.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/family.dir/family.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/family" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/family" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release-clang9/CMakeFiles/Progress/3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release-clang9/CMakeFiles/benchmark.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-clang9/CMakeFiles/benchmark.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release-clang9/CMakeFiles/benchmark.dir/crossing_bm.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release-clang9/CMakeFiles/benchmark.dir/family_bm.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release-clang9/CMakeFiles/benchmark.dir/frogs_bm.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release-clang9/benchmark" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-clang9/benchmark" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/benchmark.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/benchmark.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/benchmark.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/benchmark.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/benchmark.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/benchmark.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/benchmark.dir/reachability_bm.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release-gcc9/benchmark" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-gcc9/benchmark" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crossing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/crossing.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/family.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/family.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frogs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/frogs.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reachability.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/reachability.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

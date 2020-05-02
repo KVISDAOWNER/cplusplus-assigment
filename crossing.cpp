@@ -81,7 +81,7 @@ void solve(){
 		std::cout << "#  CGW\n" << trace;
 }
 
-int main2(){
+int main(){
 	solve();
 }
 

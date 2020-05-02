@@ -304,7 +304,7 @@ void solve(CostFn&& cost) { // no type checking: OK hack here, but not good for 
 
 
 
-int main3() {
+int main() {
 	std::cout << "-- Solve using depth as a cost: ---\n";
 	solve([](const state_t& state, const cost_t& prev_cost){
 			  return cost_t{ prev_cost.depth+1, prev_cost.noise };
