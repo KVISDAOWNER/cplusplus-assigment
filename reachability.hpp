@@ -38,6 +38,7 @@ struct node{
 };
 
 
+
 template <typename T, typename = void> //Not Container //TODO Why void here?
 struct is_container: std::false_type {};
 
@@ -101,7 +102,7 @@ class state_space_t{
             if(goal_predicate == nullptr)         throw std::invalid_argument(nullptr_err_msg(__func__, GET_VARIABLE_NAME(goal_predicate)));
 
             node<TState, TCost> (*pop)    (std::vector<node<TState, TCost>>&) {(order == search::breadth_first) ? pop_queue : pop_stack}; //TODO ref i stedet?
-            auto parent_map = std::map<node<TState, TCost>,std::vector<node<TState, TCost>>, decltype(cmp_s)>(cmp_s); //for trace and check if visited
+            auto parent_map = std::vector<std::pair<node<TState, TCost>,node<TState, TCost>>>(); //for trace and check if visited
             auto seen = std::set<TState>();
             auto goal_states = std::vector<node<TState, TCost>>();
             auto waiting = std::vector<node<TState, TCost>>();
@@ -120,7 +121,7 @@ class state_space_t{
                         seen.insert(n_state);
                         auto n_node = node(n_state, _cost_fun(n_state, state.cost)); //TODO do the null check smarter or give default func smart way?
                         push(waiting, n_node, cmp_c);
-                        parent_map[n_node].push_back(state);
+                        parent_map.push_back(std::make_pair(n_node, state));
                     //if(!parent_map.count(state)) //check to not do duplicate parents
                     }
                     //else
@@ -136,7 +137,13 @@ class state_space_t{
             for (auto& node: goal_states) {
                 trace.push_back(std::make_shared<TState>(node.state));
                 while(node.state != _start_state){
-                    node = parent_map.find(node)->second[0]; //Here we guarantee that state is a key //TODO branch out when multiple parents?
+                    for (auto& n: parent_map) {
+                        if (n.first.state == node.state){
+                            node = n.second;
+                            break;
+                        }
+                    }
+                    //node = std::find(parent_map.begin(), parent_map                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       .end(), [](node<TState,TCost> ){node}, )->second; //Here we guarantee that state is a key //TODO branch out when multiple parents?
                     trace.push_back(std::make_shared<TState>(node.state));
                 }
                 std::reverse(std::begin(trace), std::end(trace));

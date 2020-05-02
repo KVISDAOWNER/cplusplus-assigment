@@ -108,6 +108,10 @@ bool operator!=(const boat_t& b1, const boat_t& b2){
 bool operator!=(const state_t& s1, const state_t& s2){
     return s1.persons != s2.persons || s1.boat != s2.boat;
 }
+bool operator==(const state_t& s1, const state_t& s2){
+    return ! (s1 != s2);
+}
+
 
 void log(const char *s) {
     //std::cout<< "LOG: "<< s;
@@ -304,7 +308,7 @@ void solve(CostFn&& cost) { // no type checking: OK hack here, but not good for 
 
 
 
-int main() {
+int main3() {
 	std::cout << "-- Solve using depth as a cost: ---\n";
 	solve([](const state_t& state, const cost_t& prev_cost){
 			  return cost_t{ prev_cost.depth+1, prev_cost.noise };

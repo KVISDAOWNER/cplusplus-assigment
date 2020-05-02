@@ -3,9 +3,9 @@
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="PuzzleEngine" targetName="benchmark" />
-      <config projectName="PuzzleEngine" targetName="crossing" />
-      <config projectName="PuzzleEngine" targetName="frogs" />
       <config projectName="PuzzleEngine" targetName="family" />
+      <config projectName="PuzzleEngine" targetName="frogs" />
+      <config projectName="PuzzleEngine" targetName="crossing" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -19,10 +19,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a50008f-f0b3-490e-8d7d-4934db972b6c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/Progress/7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/Progress/count.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-release-gcc9/family" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-gcc9/family" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/crossing" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/crossing" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-clang9/family" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-clang9/family" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/Progress/1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/Progress/2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/Progress/count.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/benchmark.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug-gcc9/CMakeFiles/benchmark.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-clang9/CMakeFiles/Progress/3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-clang9/CMakeFiles/Progress/count.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-clang9/CMakeFiles/benchmark.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-clang9/CMakeFiles/benchmark.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-clang9/CMakeFiles/benchmark.dir/crossing_bm.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-clang9/CMakeFiles/benchmark.dir/crossing_bm.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-clang9/CMakeFiles/benchmark.dir/family_bm.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-clang9/CMakeFiles/benchmark.dir/family_bm.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-clang9/CMakeFiles/benchmark.dir/frogs_bm.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-clang9/CMakeFiles/benchmark.dir/frogs_bm.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-clang9/benchmark" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-clang9/benchmark" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/benchmark.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/benchmark.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/benchmark.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/benchmark.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/benchmark.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/benchmark.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/benchmark.dir/reachability_bm.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/crossing.dir/crossing.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/crossing.dir/crossing.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/frogs.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-gcc9/CMakeFiles/frogs.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-gcc9/benchmark" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-gcc9/benchmark" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-release-gcc9/crossing" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-release-gcc9/crossing" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crossing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/crossing.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/family.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/family.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frogs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/frogs.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reachability.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/reachability.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +54,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release-GCC9" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release-Clang9" />
   <component name="ExportToHTMLSettings">
     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/exportToHTML" />
   </component>
@@ -61,7 +82,7 @@
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="CMake Application.family">
+  <component name="RunManager" selected="CMake Application.benchmark">
     <configuration name="benchmark" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="PuzzleEngine" TARGET_NAME="benchmark" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="PuzzleEngine" RUN_TARGET_NAME="benchmark">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -113,6 +134,10 @@
       <workItem from="1587902542011" duration="15151000" />
       <workItem from="1587975891267" duration="13433000" />
       <workItem from="1588418735414" duration="2918000" />
+      <workItem from="1588432087812" duration="975000" />
+      <workItem from="1588440385273" duration="357000" />
+      <workItem from="1588441305986" duration="175000" />
+      <workItem from="1588446384247" duration="1170000" />
     </task>
     <servers />
   </component>
@@ -144,62 +169,62 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="776" y="311" width="424" height="491" key="FileChooserDialogImpl/70.27.1850.1053@70.27.1850.1053" timestamp="1587906912328" />
-    <state width="1804" height="239" key="GridCell.Tab.0.bottom" timestamp="1588424942155">
+    <state width="1804" height="175" key="GridCell.Tab.0.bottom" timestamp="1588447600056">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="239" key="GridCell.Tab.0.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1588424942155" />
-    <state width="1804" height="239" key="GridCell.Tab.0.center" timestamp="1588424942155">
+    <state width="1804" height="175" key="GridCell.Tab.0.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1588447600056" />
+    <state width="1804" height="175" key="GridCell.Tab.0.center" timestamp="1588447600055">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="239" key="GridCell.Tab.0.center/70.27.1850.1053@70.27.1850.1053" timestamp="1588424942155" />
-    <state width="1804" height="239" key="GridCell.Tab.0.left" timestamp="1588424942154">
+    <state width="1804" height="175" key="GridCell.Tab.0.center/70.27.1850.1053@70.27.1850.1053" timestamp="1588447600055" />
+    <state width="1804" height="175" key="GridCell.Tab.0.left" timestamp="1588447600055">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="239" key="GridCell.Tab.0.left/70.27.1850.1053@70.27.1850.1053" timestamp="1588424942154" />
-    <state width="1804" height="239" key="GridCell.Tab.0.right" timestamp="1588424942155">
+    <state width="1804" height="175" key="GridCell.Tab.0.left/70.27.1850.1053@70.27.1850.1053" timestamp="1588447600055" />
+    <state width="1804" height="175" key="GridCell.Tab.0.right" timestamp="1588447600055">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="239" key="GridCell.Tab.0.right/70.27.1850.1053@70.27.1850.1053" timestamp="1588424942155" />
-    <state width="1804" height="239" key="GridCell.Tab.1.bottom" timestamp="1588424941965">
+    <state width="1804" height="175" key="GridCell.Tab.0.right/70.27.1850.1053@70.27.1850.1053" timestamp="1588447600055" />
+    <state width="1804" height="239" key="GridCell.Tab.1.bottom" timestamp="1588447229374">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="239" key="GridCell.Tab.1.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1588424941965" />
-    <state width="1804" height="239" key="GridCell.Tab.1.center" timestamp="1588424941964">
+    <state width="1804" height="239" key="GridCell.Tab.1.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1588447229374" />
+    <state width="1804" height="239" key="GridCell.Tab.1.center" timestamp="1588447229372">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="239" key="GridCell.Tab.1.center/70.27.1850.1053@70.27.1850.1053" timestamp="1588424941964" />
-    <state width="1804" height="239" key="GridCell.Tab.1.left" timestamp="1588424941964">
+    <state width="1804" height="239" key="GridCell.Tab.1.center/70.27.1850.1053@70.27.1850.1053" timestamp="1588447229372" />
+    <state width="1804" height="239" key="GridCell.Tab.1.left" timestamp="1588447229372">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="239" key="GridCell.Tab.1.left/70.27.1850.1053@70.27.1850.1053" timestamp="1588424941964" />
-    <state width="1804" height="239" key="GridCell.Tab.1.right" timestamp="1588424941964">
+    <state width="1804" height="239" key="GridCell.Tab.1.left/70.27.1850.1053@70.27.1850.1053" timestamp="1588447229372" />
+    <state width="1804" height="239" key="GridCell.Tab.1.right" timestamp="1588447229373">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="239" key="GridCell.Tab.1.right/70.27.1850.1053@70.27.1850.1053" timestamp="1588424941964" />
-    <state width="1804" height="239" key="GridCell.Tab.2.bottom" timestamp="1588420365753">
+    <state width="1804" height="239" key="GridCell.Tab.1.right/70.27.1850.1053@70.27.1850.1053" timestamp="1588447229373" />
+    <state width="1804" height="239" key="GridCell.Tab.2.bottom" timestamp="1588447229377">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="239" key="GridCell.Tab.2.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1588420365753" />
-    <state width="1804" height="239" key="GridCell.Tab.2.center" timestamp="1588420365753">
+    <state width="1804" height="239" key="GridCell.Tab.2.bottom/70.27.1850.1053@70.27.1850.1053" timestamp="1588447229377" />
+    <state width="1804" height="239" key="GridCell.Tab.2.center" timestamp="1588447229375">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="239" key="GridCell.Tab.2.center/70.27.1850.1053@70.27.1850.1053" timestamp="1588420365753" />
-    <state width="1804" height="239" key="GridCell.Tab.2.left" timestamp="1588420365753">
+    <state width="1804" height="239" key="GridCell.Tab.2.center/70.27.1850.1053@70.27.1850.1053" timestamp="1588447229375" />
+    <state width="1804" height="239" key="GridCell.Tab.2.left" timestamp="1588447229374">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="239" key="GridCell.Tab.2.left/70.27.1850.1053@70.27.1850.1053" timestamp="1588420365753" />
-    <state width="1804" height="239" key="GridCell.Tab.2.right" timestamp="1588420365753">
+    <state width="1804" height="239" key="GridCell.Tab.2.left/70.27.1850.1053@70.27.1850.1053" timestamp="1588447229374" />
+    <state width="1804" height="239" key="GridCell.Tab.2.right" timestamp="1588447229375">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state width="1804" height="239" key="GridCell.Tab.2.right/70.27.1850.1053@70.27.1850.1053" timestamp="1588420365753" />
+    <state width="1804" height="239" key="GridCell.Tab.2.right/70.27.1850.1053@70.27.1850.1053" timestamp="1588447229375" />
     <state x="593" y="199" width="1114" height="737" key="SettingsEditor" timestamp="1587814226623">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="593" y="199" width="1114" height="737" key="SettingsEditor/70.27.1850.1053@70.27.1850.1053" timestamp="1587814226623" />
-    <state x="651" y="382" width="688" height="344" key="com.intellij.ide.util.TipDialog" timestamp="1588418742496">
+    <state x="651" y="382" width="688" height="344" key="com.intellij.ide.util.TipDialog" timestamp="1588446384277">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="651" y="382" width="688" height="344" key="com.intellij.ide.util.TipDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1588418742496" />
+    <state x="651" y="382" width="688" height="344" key="com.intellij.ide.util.TipDialog/70.27.1850.1053@70.27.1850.1053" timestamp="1588446384277" />
     <state x="648" y="150" width="683" height="813" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587371118700">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
