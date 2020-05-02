@@ -69,15 +69,14 @@ parentmap = std::vector of std::pair (and basic for loop (O(n)) lookup)
 -------------------------------------------------------------------
 Benchmark                            Time           CPU Iterations
 -------------------------------------------------------------------
-frogs_2_breadth                  14424 ns      14422 ns      46656
-frogs_2_depth                    14883 ns      14882 ns      50613
-frogs_4_breadth                 217751 ns     217739 ns       3133
-frogs_4_depth                   175981 ns     175977 ns       4066
-crossing_breadth                  5373 ns       5373 ns     129360
-family_depth_cost               625520 ns     625476 ns       1135
-family_noise_old_son_cost       291853 ns     291814 ns       2386
-family_noise_young_son_cost     291118 ns     291020 ns       2293
-
+frogs_2_breadth                    184 ns        182 ns    3769393
+frogs_2_depth                      202 ns        201 ns    3807465
+frogs_4_breadth                    184 ns        183 ns    3842110
+frogs_4_depth                      192 ns        192 ns    3756872
+crossing_breadth                  5181 ns       5161 ns     136931
+family_depth_cost               604838 ns     600639 ns       1145
+family_noise_old_son_cost       290692 ns     290032 ns       2429
+family_noise_young_son_cost     291082 ns     289861 ns       2425
 
 
 Release Clang9
