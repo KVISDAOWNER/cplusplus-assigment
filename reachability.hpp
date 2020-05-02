@@ -54,51 +54,9 @@ struct is_container<C,
 template<typename Container>
 constexpr auto is_container_v = is_container<Container>::value;
 
-
-
-//TODO remove this if not used
-template <typename T, typename  = void> //Not not equal comparable
-struct is_not_equal_comparable : std::false_type {};
-
-//https://stackoverflow.com/questions/16399346/c11-static-assert-for-equality-comparable-type
-template <typename T>
-struct is_not_equal_comparable<T,
-        typename std::enable_if<
-                true,
-                decltype(std::declval<T&>() != std::declval<decltype(nullptr)>(), (void)0)
-        >::type
->: std::true_type{};
-
-//TODO remove this if not used
-template <typename T, typename  = void> //Not less than comparable
-struct is_less_than_comparable : std::false_type {};
-
-//https://stackoverflow.com/questions/16399346/c11-static-assert-for-equality-comparable-type
-template <typename T>
-struct is_less_than_comparable<T,
-        typename std::enable_if<
-                true,
-                decltype(std::declval<T&>() < std::declval<decltype(nullptr)>(), (void)0)
-        >::type
->: std::true_type{};
-
-template <typename T, typename = void> //Not Container //TODO Why void here?
-struct is_comparable: std::false_type {};
-
-template <typename T>
-struct is_comparable<T,
-        std::void_t<
-                typename std::enable_if<is_not_equal_comparable<T>::value, void>,
-                typename std::enable_if<is_less_than_comparable<T>::value, void>
-        >
->: std::true_type {};
-
-template <typename T>
-constexpr auto is_comparable_v = is_comparable<T>::value;
-
 //TODO https://stackoverflow.com/questions/40934997/stdmove-or-stdforward-when-assigning-universal-constructor-to-member-variabl
 // https://stackoverflow.com/questions/17316386/pass-by-value-or-universal-reference
-template <typename TState, typename TCost = default_cost, typename TCost_Fun = std::function<TCost(const TState&, const TCost&)>, typename = std::enable_if<is_comparable_v<TState>>>
+template <typename TState, typename TCost = default_cost, typename TCost_Fun = std::function<TCost(const TState&, const TCost&)>>
 class state_space_t{
     typedef std::function<std::vector<TState>(TState&)> succ_fun;
     public:
@@ -218,13 +176,13 @@ class state_space_t{
         } //TODO optimize? og ikke static?
 
         //https://stackoverflow.com/questions/15843525/how-do-you-insert-the-value-in-a-sorted-vector
-        template<typename TFunc, typename C >
+        template<typename TFunc, typename C>
         typename std::enable_if<is_container_v<C>, void>::type
-        push(C& c, node<TState, TCost> const& item, TFunc cmp)
+        push(C& c,  typename C::value_type item, TFunc cmp)
         {
             c.insert(
-                std::upper_bound( c.begin(), c.end(), item, cmp ),
-                item);
+                    std::upper_bound( c.begin(), c.end(), item, cmp ),
+                    item);
         }
 };
 
