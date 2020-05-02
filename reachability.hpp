@@ -38,7 +38,6 @@ struct node{
 };
 
 
-
 template <typename T, typename = void> //Not Container //TODO Why void here?
 struct is_container: std::false_type {};
 
@@ -56,22 +55,50 @@ template<typename Container>
 constexpr auto is_container_v = is_container<Container>::value;
 
 
-template <typename T, typename  = void> //Not comparable
-struct is_equality_comparable : std::false_type {};
+
+//TODO remove this if not used
+template <typename T, typename  = void> //Not not equal comparable
+struct is_not_equal_comparable : std::false_type {};
 
 //https://stackoverflow.com/questions/16399346/c11-static-assert-for-equality-comparable-type
 template <typename T>
-struct is_equality_comparable<T,
+struct is_not_equal_comparable<T,
         typename std::enable_if<
                 true,
-                decltype(std::declval<T&>() == std::declval<decltype(nullptr)>(), (void)0)
+                decltype(std::declval<T&>() != std::declval<decltype(nullptr)>(), (void)0)
         >::type
 >: std::true_type{};
 
+//TODO remove this if not used
+template <typename T, typename  = void> //Not less than comparable
+struct is_less_than_comparable : std::false_type {};
+
+//https://stackoverflow.com/questions/16399346/c11-static-assert-for-equality-comparable-type
+template <typename T>
+struct is_less_than_comparable<T,
+        typename std::enable_if<
+                true,
+                decltype(std::declval<T&>() < std::declval<decltype(nullptr)>(), (void)0)
+        >::type
+>: std::true_type{};
+
+template <typename T, typename = void> //Not Container //TODO Why void here?
+struct is_comparable: std::false_type {};
+
+template <typename T>
+struct is_comparable<T,
+        std::void_t<
+                typename std::enable_if<is_not_equal_comparable<T>::value, void>,
+                typename std::enable_if<is_less_than_comparable<T>::value, void>
+        >
+>: std::true_type {};
+
+template <typename T>
+constexpr auto is_comparable_v = is_comparable<T>::value;
 
 //TODO https://stackoverflow.com/questions/40934997/stdmove-or-stdforward-when-assigning-universal-constructor-to-member-variabl
 // https://stackoverflow.com/questions/17316386/pass-by-value-or-universal-reference
-template <typename TState, typename TCost = default_cost, typename TCost_Fun = std::function<TCost(const TState&, const TCost&)>>
+template <typename TState, typename TCost = default_cost, typename TCost_Fun = std::function<TCost(const TState&, const TCost&)>, typename = std::enable_if<is_comparable_v<TState>>>
 class state_space_t{
     typedef std::function<std::vector<TState>(TState&)> succ_fun;
     public:
@@ -97,14 +124,17 @@ class state_space_t{
                 TCost_Fun   cost_fun )
                 : _start_state{start_state}, _initial_cost{initial_cost}, _successor_fun{successors}, _is_valid{is_valid}, _cost_fun{cost_fun}
                 {
+                    static_assert(std::is_invocable_r<TCost, decltype(cost_fun), const TState&, const TCost&>::value,
+                            "function argument is either not invocable or does not coincide with expected "
+                           "argument/return types");
 
                     //static_assert(std::is_function<TCost_Fun>::value, "cost function type must be invocable");
                     //static_assert(!std::is_same<decltype(cost_fun), decltype(nullptr)>::value, "Constructor cannot be called with nullptr arguments."); //if it is null pointer constant type.
-                    static_assert(is_equality_comparable<TCost_Fun>::value, "cost function type must be equality \"==\" comparable to nullptr");
+                    //static_assert(is_equality_comparable<TCost_Fun>::value, "cost function type must be equality \"==\" comparable to nullptr");
                     //static_assert(is_equality_comparable<decltype(is_valid)>::value, "is valid function type must be equality \"==\" comparable to nullptr");
 
                     //if(is_valid == nullptr)         throw argument_null_exception(__func__, GET_VARIABLE_NAME(is_valid));
-                    if(cost_fun == nullptr)    throw std::invalid_argument(nullptr_err_msg(__func__, GET_VARIABLE_NAME(cost_fun)));
+                    //if(cost_fun == nullptr)    throw std::invalid_argument(nullptr_err_msg(__func__, GET_VARIABLE_NAME(cost_fun)));
                 }
 
         std::vector<std::vector<std::shared_ptr<TState>>> check(std::function<bool(TState)> goal_predicate, search_order_t order = search_order_t::breadth_first){
@@ -158,7 +188,6 @@ class state_space_t{
             return solutionTrace;
         }
 
-
     private:
         typedef  std::function<bool (const node<TState, TCost>& a, const node<TState, TCost>& b)>   cmp_node_func;
 
@@ -202,6 +231,7 @@ class state_space_t{
 template<typename TState, typename Container>
 typename std::enable_if<is_container_v<Container>, std::function<std::vector<TState>(TState&)>>::type
 successors(Container transitions (const TState&)) {
+    static_assert(std::is_invocable<decltype(transitions), const TState&>::value, "function argument must be invocable"); //TODO det her kan vel aldrig være false?
     return [transitions](const TState& startState){ //TODO hvorfor kan den ikke tage &transitions?
         auto states = std::vector<TState>(); //results
         auto functions = transitions(startState);

@@ -68,7 +68,7 @@ bool operator==(const person_t& p1, const person_t& p2){
     return p1.pos == p2.pos;
 }
 
-bool operator<(const person_t& p1, const person_t& p2){
+/*bool operator<(const person_t& p1, const person_t& p2){
     return p1.pos< p2.pos;
 }
 
@@ -100,7 +100,7 @@ bool operator<(const state_t& s1, const state_t& s2){
             return false;
     }
     return false; //all fields are ==
-}
+}*/
 
 bool operator!=(const boat_t& b1, const boat_t& b2){
     return b1.pos != b2.pos || b1.capacity != b2.capacity || b1.passengers != b2.passengers;
@@ -287,7 +287,7 @@ void solve(CostFn&& cost) { // no type checking: OK hack here, but not good for 
 		cost_t{},   // initial cost
 		successors<state_t>(transitions), // successor generator from your library
 		&river_crossing_valid,            // invariant over states
-		std::forward<CostFn>(cost)};      // cost over states
+        std::forward<CostFn>(cost)};      // cost over states //TODO owrks with nullptr?
 	auto solutions = states.check(&goal);
 	if (solutions.empty()) {
 		std::cout << "No solution\n";
