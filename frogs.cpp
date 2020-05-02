@@ -15,6 +15,7 @@
 enum class frog { empty, green, brown };
 using stones_t = std::vector<frog>;
 
+//Partly solves Requirement 3. "Print the trace of a state sequence from the initial state to the found goal..."
 std::ostream& operator<<(std::ostream& os, const stones_t stones){
     for(const auto& stone: stones){ //TODO test om virker og overvej auto&&?
         switch (stone){
@@ -26,6 +27,7 @@ std::ostream& operator<<(std::ostream& os, const stones_t stones){
     return os;
 }
 
+//Partly solves Requirement 3. "Print the trace of a state sequence from the initial state to the found goal..."
 std::ostream& operator<<(std::ostream& os, const std::vector<std::shared_ptr<stones_t>> stones_trace){
     const int size = (*stones_trace[0]).size();
     for(const auto& stones: stones_trace){
@@ -134,7 +136,7 @@ void solve(size_t frogs, search_order_t order = search_order_t::breadth_first)
     }
 }
 
-int main()
+int main1()
 {
     explain();
     std::cout << "--- Solve with depth-first search: ---\n";

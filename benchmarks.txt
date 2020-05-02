@@ -1,0 +1,89 @@
+Solves Requirement 10. "Try various storage and lookup strategies (e.g. tree, hash table), use benchmarks to nd the best one."
+
+Run on (4 X 3500 MHz CPU s)
+CPU Caches:
+  L1 Data 32K (x2)
+  L1 Instruction 32K (x2)
+  L2 Unified 256K (x2)
+  L3 Unified 3072K (x1)
+***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+
+
+Release GCC9
+seen = ORDERED std::set 	
+parent_map = std::map 	(red–black tree)
+-------------------------------------------------------------------
+Benchmark                            Time           CPU Iterations
+-------------------------------------------------------------------
+frogs_2_breadth                    601 ns        600 ns    1170683
+frogs_2_depth                      615 ns        614 ns    1130598
+frogs_4_breadth                    191 ns        190 ns    3723958
+frogs_4_depth                      184 ns        183 ns    3854337
+crossing_breadth                  6940 ns       6932 ns     103866
+family_depth_cost               682794 ns     678036 ns       1003
+family_noise_old_son_cost       345506 ns     343057 ns       2015
+family_noise_young_son_cost     346360 ns     343642 ns       2067				
+
+
+
+Release Clang9
+seen = ORDERED std::set 	
+parent_map = std::map 	(red–black tree)	
+-------------------------------------------------------------------
+Benchmark                            Time           CPU Iterations
+-------------------------------------------------------------------
+frogs_2_breadth                    532 ns        408 ns    1856250
+frogs_2_depth                      210 ns        208 ns    3156118
+frogs_4_breadth                    195 ns        195 ns    3696299
+frogs_4_depth                      198 ns        198 ns    3350338
+crossing_breadth                  5981 ns       5981 ns     111509
+family_depth_cost               654838 ns     654765 ns       1003
+family_noise_old_son_cost       329640 ns     329624 ns       2109
+family_noise_young_son_cost     326979 ns     326943 ns       2138
+
+pushback hurtigere end insert??
+
+
+
+Release GCC9
+seen = UNORDERED std::vector	
+parent_map = std::map 	(red–black tree)
+-------------------------------------------------------------------
+Benchmark                            Time           CPU Iterations
+-------------------------------------------------------------------
+frogs_2_breadth                  18404 ns      17479 ns      36237
+frogs_2_depth                    11982 ns      11912 ns      57224
+frogs_4_breadth                 255362 ns     253742 ns       2561
+frogs_4_depth                   236414 ns     235261 ns       2965
+crossing_breadth                  7416 ns       7371 ns     101230
+family_depth_cost              3401750 ns    3382995 ns        202
+family_noise_old_son_cost       899873 ns     894910 ns        806
+family_noise_young_son_cost     891467 ns     886454 ns        797
+
+
+
+Release Clang9
+seen = ORDERED std::set		
+parentmap = std::vector of std::pair (and basic for loop (O(n)) lookup)
+-------------------------------------------------------------------
+Benchmark                            Time           CPU Iterations
+-------------------------------------------------------------------
+frogs_2_breadth                  14424 ns      14422 ns      46656
+frogs_2_depth                    14883 ns      14882 ns      50613
+frogs_4_breadth                 217751 ns     217739 ns       3133
+frogs_4_depth                   175981 ns     175977 ns       4066
+crossing_breadth                  5373 ns       5373 ns     129360
+family_depth_cost               625520 ns     625476 ns       1135
+family_noise_old_son_cost       291853 ns     291814 ns       2386
+family_noise_young_son_cost     291118 ns     291020 ns       2293
+
+
+
+Release Clang9
+seen = ORDERED std::set		
+parentmap = std::unordered_map 	(hash table)
+-------------------------------------------------------------------
+Benchmark                            Time           CPU Iterations
+-------------------------------------------------------------------
+N/A did not have time for implementing a good hash

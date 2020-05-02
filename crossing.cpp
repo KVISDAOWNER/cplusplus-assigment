@@ -15,6 +15,7 @@ enum actor { cabbage, goat, wolf }; // names of the actors
 enum class pos_t { shore1, travel, shore2}; // names of the actor positions
 using actors_t = std::array<pos_t,3>; // positions of the actors
 
+//Partly solves Requirement 3. "Print the trace of a state sequence from the initial state to the found goal..."
 std::ostream& operator<<(std::ostream& os, const actors_t actors){
     for(const auto& actor: actors){ //TODO test om virker og overvej auto&&?
         switch (actor){
@@ -25,7 +26,7 @@ std::ostream& operator<<(std::ostream& os, const actors_t actors){
     }
     return os;
 }
-
+//Partly solves Requirement 3. "Print the trace of a state sequence from the initial state to the found goal..."
 std::ostream& operator<<(std::ostream& os, const std::vector<std::shared_ptr<actors_t>> actors_trace){
     int round = 0;
     for(const auto& actors: actors_trace){
@@ -80,7 +81,7 @@ void solve(){
 		std::cout << "#  CGW\n" << trace;
 }
 
-int main(){
+int main2(){
 	solve();
 }
 

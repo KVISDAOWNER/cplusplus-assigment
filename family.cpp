@@ -37,7 +37,7 @@ struct state_t
 	std::array<person_t,8> persons;
 };
 
-
+//Partly solves Requirement 3. "Print the trace of a state sequence from the initial state to the found goal..."
 std::ostream& operator<<(std::ostream& os, const state_t state){
     const int Mothr = 0;
     const int Fathr = 1;
@@ -304,7 +304,7 @@ void solve(CostFn&& cost) { // no type checking: OK hack here, but not good for 
 
 
 
-int main() {
+int main3() {
 	std::cout << "-- Solve using depth as a cost: ---\n";
 	solve([](const state_t& state, const cost_t& prev_cost){
 			  return cost_t{ prev_cost.depth+1, prev_cost.noise };
