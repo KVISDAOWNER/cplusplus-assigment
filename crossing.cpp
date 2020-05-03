@@ -17,7 +17,7 @@ using actors_t = std::array<pos_t,3>; // positions of the actors
 
 //Partly solves Requirement 3. "Print the trace of a state sequence from the initial state to the found goal..."
 std::ostream& operator<<(std::ostream& os, const actors_t actors){
-    for(const auto& actor: actors){ //TODO test om virker og overvej auto&&?
+    for(const auto& actor: actors){ 
         switch (actor){
             case pos_t::shore1: os<<"1";break;
             case pos_t::travel: os<<"~";break;

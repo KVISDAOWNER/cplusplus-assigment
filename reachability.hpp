@@ -89,7 +89,7 @@ public:
         //templates. If the search order or cost are not used, the library should assume reasonable defaults."
         state_space_t(
                 TState      start_state,
-                succ_fun    successors, //TODO better default? std::vector ok here?
+                succ_fun    successors,
                 bool        (*is_valid) (const TState&) = [](const TState&){return true;}) //frogs needs default
                 : state_space_t(        //constructor chaining to avoid duplicate null argument type check
                         start_state,

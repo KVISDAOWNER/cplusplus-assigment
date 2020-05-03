@@ -17,7 +17,7 @@ using stones_t = std::vector<frog>;
 
 //Partly solves Requirement 3. "Print the trace of a state sequence from the initial state to the found goal..."
 std::ostream& operator<<(std::ostream& os, const stones_t stones){
-    for(const auto& stone: stones){ //TODO test om virker og overvej auto&&?
+    for(const auto& stone: stones){
         switch (stone){
             case frog::empty: os<<"-";break;
             case frog::green: os<<"G";break;

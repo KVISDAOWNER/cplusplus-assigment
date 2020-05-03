@@ -63,7 +63,6 @@ std::ostream& operator<<(std::ostream& os, const state_t state){
     return os;
 }
 
-//TODO naive?
 bool operator==(const person_t& p1, const person_t& p2){
     return p1.pos == p2.pos;
 }
@@ -287,7 +286,7 @@ void solve(CostFn&& cost) { // no type checking: OK hack here, but not good for 
 		cost_t{},   // initial cost
 		successors<state_t>(transitions), // successor generator from your library
 		&river_crossing_valid,            // invariant over states
-        std::forward<CostFn>(cost)};      // cost over states //TODO owrks with nullptr?
+        std::forward<CostFn>(cost)};      // cost over states
 	auto solutions = states.check(&goal);
 	if (solutions.empty()) {
 		std::cout << "No solution\n";
